@@ -25,16 +25,16 @@ public class WikiService {
         }
     }
 
-    public WikiDTO createOrganization(WikiDTO WikiDTO){
+    public WikiDTO createWiki(WikiDTO WikiDTO){
         Wiki wiki = mapper.toEntity(WikiDTO);
-        Wiki savedOrganization = repository.save(wiki);
-        return mapper.toDTO(savedOrganization);
+        Wiki savedWiki = repository.save(wiki);
+        return mapper.toDTO(savedWiki);
     }
 
     //@Transactional
-    public WikiDTO updateOrganization(WikiDTO WikiDTO){
-        Optional<Wiki> organizationOpt = repository.findById(WikiDTO.getId());
-        if(organizationOpt.isPresent()){
+    public WikiDTO updateWiki(WikiDTO WikiDTO){
+        Optional<Wiki> wikiOpt = repository.findById(WikiDTO.getId());
+        if(WikiOpt.isPresent()){
             Wiki wiki = mapper.toEntity(WikiDTO);
             return mapper.toDTO(repository.save(wiki));
         } else {
