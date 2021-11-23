@@ -1,8 +1,11 @@
 package com.architecture.wigame.wiki;
 import com.architecture.wigame.fiche.Fiche;
+import com.architecture.wigame.utilisateur.Utilisateur;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 public class WikiDTO {
@@ -10,7 +13,7 @@ public class WikiDTO {
     private Long id;
 
     private String name;
-    private String categorie; // TODO: WIP catwiki
-    private Utilisateur createur; // TODO: verif lien Utilisateur
-    private Collection<Fiche> listFiche;
+    private String categorie; //WIP
+    private Utilisateur createur;
+    private List<Fiche> listFiche = new ArrayList<>();
 }

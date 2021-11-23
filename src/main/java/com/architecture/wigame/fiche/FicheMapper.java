@@ -5,8 +5,8 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface FicheMapper {
 
-    Fiche toEntity(FicheDTO organizationDTO);
+    Fiche toEntity(FicheDTO ficheDTO);
 
-    FicheDTO toDTO(Fiche organization);
+    FicheDTO toDTO(Fiche fiche);
 
 }

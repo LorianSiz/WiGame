@@ -7,4 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class WikiService {
+
+    /*private final WikiRepository repository;
+    private final WikiMapper mapper;*/
+
 }
