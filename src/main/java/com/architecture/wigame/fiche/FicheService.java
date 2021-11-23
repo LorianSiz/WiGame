@@ -12,7 +12,34 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FicheService {
 
-    /*private final FicheRepository repository;
-    private final FicheMapper mapper;*/
+    private final FicheRepository repository;
+    private final FicheMapper mapper;
+
+    /*
+    public FicheDTO getFicheById(Long id) {
+        Optional<Fiche> fiche = repository.findById(id);
+        if (fiche.isPresent()) {
+            return mapper.toDTO(fiche.get());
+        } else {
+            //throw new Exception("Fiche with id " + id + " not found");
+        }
+    }
+
+    public FicheDTO createFiche(FicheDTO FicheDTO){
+        Fiche fiche = mapper.toEntity(FicheDTO);
+        Fiche savedFiche = repository.save(fiche);
+        return mapper.toDTO(savedFiche);
+    }
+
+    //@Transactional
+    public FicheDTO updateFiche(FicheDTO FicheDTO){
+        Optional<Fiche> ficheOpt = repository.findById(FicheDTO.getId());
+        if(ficheOpt.isPresent()){
+            Fiche fiche = mapper.toEntity(FicheDTO);
+            return mapper.toDTO(repository.save(fiche));
+        } else {
+            //throw new ResourceNotFoundException("fiche " + FicheDTO.getName() + " does not exist when trying to update");
+        }
+    }*/
 
 }
