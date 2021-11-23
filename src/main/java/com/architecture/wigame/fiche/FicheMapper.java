@@ -1,8 +1,8 @@
 package com.architecture.wigame.fiche;
 
-//import org.mapstruct.Mapper;
+import org.mapstruct.Mapper;
 
-//@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface FicheMapper {
 
     Fiche toEntity(FicheDTO organizationDTO);

@@ -4,5 +4,5 @@ package com.architecture.wigame.fiche;
 import org.springframework.stereotype.Repository;
 
 //@Repository
-public interface FicheRepository /*extends JpaRepository<Organization, Long>*/ {
+public interface FicheRepository /*extends JpaRepository<Fiche, Long>*/ {
 }

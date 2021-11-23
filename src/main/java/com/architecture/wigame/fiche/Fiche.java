@@ -1,12 +1,13 @@
 package com.architecture.wigame.fiche;
 
+import com.architecture.wigame.utilisateur.Utilisateur;
 import lombok.Getter;
 import lombok.Setter;
 
 //import javax.persistence.*;
 
 //@Entity
-//@Table(name = "organization")
+//@Table(name = "fiche")
 @Setter
 @Getter
 public class Fiche {

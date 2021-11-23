@@ -1,6 +1,5 @@
 package com.architecture.wigame.fiche;
 
-//import com.cronos.trainingatcronos.backend.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,4 +11,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class FicheService {
+
+    /*private final FicheRepository repository;
+    private final FicheMapper mapper;*/
+
 }

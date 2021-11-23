@@ -1,4 +1,5 @@
 package com.architecture.wigame.fiche;
+import com.architecture.wigame.utilisateur.Utilisateur;
 import lombok.Data;
 
 @Data
