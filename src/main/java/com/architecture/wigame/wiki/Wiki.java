@@ -20,12 +20,12 @@ public class Wiki {
     @Column(name = "wiki_id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "titre")
+    private String titre;
     @Column(name = "categorie")
     private String categorie; //WIP
     @OneToOne
-    @JoinColumn(name = "createur", nullable = false)
+    @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur createur;
     @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     @JoinColumn(name = "wiki_id")

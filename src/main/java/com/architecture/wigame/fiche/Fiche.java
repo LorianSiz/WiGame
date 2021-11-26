@@ -28,7 +28,7 @@ public class Fiche {
     @Column(name = "fiabilite")
     private int fiabilite;
     @OneToOne
-    @JoinColumn(name = "redacteur", nullable = false)
+    @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur redacteur;
 
 

@@ -11,7 +11,7 @@ import java.util.List;
 public class WikiDTO {
 
     private Long id;
-    private String name;
+    private String titre;
     private String categorie; //WIP
     private Utilisateur createur;
     private List<Fiche> listFiche = new ArrayList<>();

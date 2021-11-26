@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="lsiz" id="create utilisateur">
+        <createTable tableName="utilisateur">
+            <column autoIncrement="true" name="utilisateur_id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="pseudo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mdp" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contenu" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mail" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="lsiz" id="create wiki">
+        <createTable tableName="wiki">
+            <column autoIncrement="true" name="wiki_id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="titre" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="categorie" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_wiki_utilisateur" referencedTableName="utilisateur"
+                             referencedColumnNames="utilisateur_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="lsiz" id="create fiche">
+        <createTable tableName="fiche">
+            <column autoIncrement="true" name="fiche_id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="titre" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="categorie" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contenu" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fiabilite" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redacteur" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_fiche_utilisateur" referencedTableName="utilisateur"
+                             referencedColumnNames="utilisateur_id"/>
+            </column>
+            <column name="wiki_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_fiche_wiki" referencedTableName="wiki"
+                             referencedColumnNames="wiki_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
