@@ -11,7 +11,6 @@ import java.util.List;
 public class WikiDTO {
 
     private Long id;
-
     private String name;
     private String categorie; //WIP
     private Utilisateur createur;
