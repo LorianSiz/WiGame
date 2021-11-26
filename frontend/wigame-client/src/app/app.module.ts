@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { WikiComponent } from './wiki/wiki.component';
+import { FicheComponent } from './fiche/fiche.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    WikiComponent
+    WikiComponent,
+    FicheComponent
   ],
   imports: [
     BrowserModule

@@ -5,29 +5,30 @@ import com.architecture.wigame.utilisateur.Utilisateur;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
 import java.util.List;
 
-//import javax.persistence.*;
+import javax.persistence.*;
 
-//@Entity
-//@Table(name = "wiki")
 @Setter
 @Getter
+@Entity
+@Table(name = "wiki")
 public class Wiki {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "wiki_id")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "wiki_id")
     private Long id;
 
-    //@Column(name = "name")
-    private String name;
-    //@Column(name = "categorie")
+    @Column(name = "titre")
+    private String titre;
+    @Column(name = "categorie")
     private String categorie; //WIP
-    //@Column(name = "createur")
+    @OneToOne
+    @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur createur;
-    //@OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
-    //@JoinColumn(name = "wiki_id")
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @JoinColumn(name = "wiki_id")
     private List<Fiche> listeFiche;
 
     public Wiki() {
