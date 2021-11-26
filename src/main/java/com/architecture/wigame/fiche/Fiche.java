@@ -4,29 +4,31 @@ import com.architecture.wigame.utilisateur.Utilisateur;
 import lombok.Getter;
 import lombok.Setter;
 
-//import javax.persistence.*;
+import javax.persistence.*;
 
-//@Entity
-//@Table(name = "fiche")
 @Setter
 @Getter
+@Entity
+@Table(name = "fiche")
 public class Fiche {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "fiche_id")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "fiche_id")
     private Long id;
 
-    //@Column(name = "titre")
+    @Column(name = "titre")
     private String titre;
-    //@Column(name = "categorie")
+    @Column(name = "categorie")
     private String categorie; // WORK IN PROGRESS
-    //@Column(name = "contenu")
+    @Column(name = "contenu")
     private String contenu; // WORK IN PROGRESS
-    //@Column(name = "note")
+    @Column(name = "note")
     private double note;
-    //@Column(name = "fiabilite")
+    @Column(name = "fiabilite")
     private int fiabilite;
-    //@Column(name = "redacteur")
+    @OneToOne
+    @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur redacteur;
 
 

@@ -6,7 +6,6 @@ import lombok.Data;
 public class FicheDTO {
 
     private Long id;
-
     private String titre;
     private String categorie;
     private String contenu;

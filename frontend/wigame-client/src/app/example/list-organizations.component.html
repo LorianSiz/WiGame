@@ -1,0 +1,114 @@
+<!--<div class="page-container">
+  <h2 i18n="@@organizations">Liste des organizations :</h2>
+  <br/>
+  <p-table #dt [columns]="cols" [paginator]="true" [rows]="10" [value]="organizations"
+           styleClass="ui-table-customers">
+    <ng-template let-columns pTemplate="header">
+      <tr>
+        <th *ngFor="let col of columns" id="Col1">
+          <div *ngIf="col.field === 'name'; else notFiltered" [pSortableColumn]="col.field">
+            {{ col.header }}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </div>
+          <ng-template #notFiltered>
+            {{ col.header }}
+          </ng-template>
+        </th>
+        <th id="buttonrow2Training">
+          <div class="right-button">
+            <button (click)="createOrganization()" [title]="createOrganizationTag" class="btn btn-primary" id="buttonCreateOrganization"
+                    style="background-color:#1c4fab;">
+              <em class="pi pi-plus"></em>
+            </button>
+          </div>
+        </th>
+    </ng-template>
+    <ng-template let-columns="columns" let-rowData pTemplate="body">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns; let i = rowIndex">
+            <p *ngIf="col.field != null;">
+              {{ rowData[col.field] }}
+            </p>
+        </td>
+        <td>
+          <div class="right-button">
+            <button
+              (click)="modifyOrganization(rowData.id)"
+              icon="pi pi-pencil"
+              pButton
+              type="button"
+            ></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog [(visible)]="displayForm" [header]="organizationTag" [modal]="true" [responsive]="true"
+            id="modalModel">
+    <div class="modal-body">
+      <form [formGroup]="formGroup">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label class="input-label" i18n="@@nameOrganization">Name</label>
+          <input [ngClass]="{ 'invalid': submitted && formGroup.controls.name.errors }" class="form-control"
+                 formControlName="name"
+                 id="inputName"
+                 type="text"/>
+          <div *ngIf="submitted && formGroup.controls.name.errors != null" class="alert-danger" i18n="@@missingName"
+               id="missingOrganization">
+            text
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="input-label" i18n="@@nameContact">Name contact</label>
+          <input [ngClass]="{ 'invalid': submitted && formGroup.controls.nameContact.errors }" class="form-control"
+                 formControlName="nameContact"
+                 id="inputNameContact"
+                 type="text"/>
+          <div *ngIf="submitted && formGroup.controls.nameContact.errors != null" class="alert-danger" i18n="@@missingName">
+            text
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="input-label" i18n="@@firstname">First name contact</label>
+          <input [ngClass]="{ 'invalid': submitted && formGroup.controls.firstnameContact.errors }" class="form-control"
+                 formControlName="firstnameContact"
+                 id="inputFirstnameContact"
+                 type="text"/>
+          <div *ngIf="submitted && formGroup.controls.firstnameContact.errors != null" class="alert-danger" i18n="@@missingFirstname">
+            text
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="input-label" i18n="@@mail">Mail contact</label>
+          <input [ngClass]="{ 'invalid': submitted && formGroup.controls.mailContact.errors }" class="form-control"
+                 formControlName="mailContact"
+                 id="inputMailContact"
+                 type="email"/>
+          <div *ngIf="submitted && formGroup.controls.mailContact.errors != null" class="alert-danger" i18n="@@missingEmail">
+            text
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="input-label" i18n="@@tel">Tel contact</label>
+          <input [ngClass]="{ 'invalid': submitted && formGroup.controls.telContact.errors }" class="form-control"
+                 formControlName="telContact"
+                 id="inputTelContact"
+                 type="text"/>
+          <div *ngIf="submitted && formGroup.controls.telContact.errors != null" class="alert-danger" i18n="@@missingPhoneNumber">
+            text
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button (click)="saveOrganization()" class="btn btn-primary"
+              i18n="@@save" id="ButtonSaveOrganization"
+              style="background-color:#1c4fab;" type="button"> Link
+        training Request
+      </button>
+    </div>
+  </p-dialog>
+</div>-->
