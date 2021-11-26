@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fiche } from '../fiche';
+import { fiche } from './fiche';
 
 @Component({
   selector: 'app-fiche',
