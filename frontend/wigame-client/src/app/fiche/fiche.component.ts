@@ -7,7 +7,12 @@ import { fiche } from './fiche';
   styleUrls: ['./fiche.component.css'],
 })
 export class FicheComponent implements OnInit {
-  constructor(private id : number, private titre : string, private contenu : string, private user : string) { }
+  id: number = 0;
+  titre : string = "";
+  contenu : string = "";
+  user : string = "";
+
+  constructor() { }
 
   ngOnInit(): void {
   }
