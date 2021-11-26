@@ -41,5 +41,4 @@ public class FicheService {
             //throw new ResourceNotFoundException("fiche " + FicheDTO.getName() + " does not exist when trying to update");
         }
     }*/
-
 }
