@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FicheComponent} from "../fiche/fiche.component";
 
 @Component({
   selector: 'app-wiki',
@@ -6,14 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wiki.component.css']
 })
 export class WikiComponent implements OnInit {
-  id: number | undefined;
-  name: string | undefined;
-  categorie: string | undefined;
-  createur: string | undefined;
-  //lstFiche: FicheComponent[];
+  id: number = 0;
+  name: String = "";
+  categorie: String = "";
+  createur : String = "";
+  lstFiche: FicheComponent[] = [];
 
-  constructor(id: number, name: string, categorie: string, createur: string) {
-
+  constructor() {
   }
 
   ngOnInit(): void {
