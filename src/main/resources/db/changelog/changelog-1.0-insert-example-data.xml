@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="insert utilisateurs" author="lsiz">
+        <insert tableName="utilisateur">
+            <column name="pseudo" value="Major"/>
+            <column name="mdp" value="123"/>
+            <column name="mail" value="major@gmail.com"/>
+        </insert>
+        <insert tableName="utilisateur">
+            <column name="pseudo" value="Abloum"/>
+            <column name="mdp" value="456"/>
+            <column name="mail" value="abloum@gmail.com"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert wikis" author="lsiz">
+        <insert tableName="wiki">
+            <column name="titre" value="Honor Harrington"/>
+            <column name="categorie" value="COMMUNAUTAIRE"/>
+            <column name="utilisateur_id" value="1"/>
+        </insert>
+        <insert tableName="wiki">
+            <column name="titre" value="Minecraft"/>
+            <column name="categorie" value="REFERENCE"/>
+            <column name="utilisateur_id" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert fiches" author="lsiz">
+        <insert tableName="fiche">
+            <column name="titre" value="Honor Harrington"/>
+            <column name="categorie" value="DESCRIPTION"/>
+            <column name="contenu" value="blabla"/>
+            <column name="fiabilite" value="4"/>
+            <column name="note" value="5"/>
+            <column name="utilisateur_id" value="1"/>
+            <column name="wiki_id" value="1"/>
+            <column name="url" value="https://honorverse.fandom.com/wiki/Main_Page"/>
+        </insert>
+        <insert tableName="fiche">
+            <column name="titre" value="Honor Harrington (Personnage)"/>
+            <column name="categorie" value="FICHE"/>
+            <column name="contenu" value="blabla2"/>
+            <column name="note" value="5"/>
+            <column name="utilisateur_id" value="1"/>
+            <column name="wiki_id" value="1"/>
+        </insert>
+
+        <insert tableName="fiche">
+            <column name="titre" value="Minecraft"/>
+            <column name="categorie" value="DESCRIPTION"/>
+            <column name="contenu" value="blabla3"/>
+            <column name="fiabilite" value="4"/>
+            <column name="utilisateur_id" value="1"/>
+            <column name="wiki_id" value="2"/>
+            <column name="url" value="https://www.minecraft.net/fr-fr"/>
+        </insert>
+        <insert tableName="fiche">
+            <column name="titre" value="1.18"/>
+            <column name="categorie" value="ACTUALITE"/>
+            <column name="contenu" value="blabla4"/>
+            <column name="fiabilite" value="4"/>
+            <column name="utilisateur_id" value="2"/>
+            <column name="wiki_id" value="2"/>
+            <column name="url" value="https://www.minecraft.net/fr-fr"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

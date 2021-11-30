@@ -12,4 +12,5 @@ public class FicheDTO {
     private double note;
     private int fiabilite;
     private Utilisateur redacteur;
+    private String url;
 }

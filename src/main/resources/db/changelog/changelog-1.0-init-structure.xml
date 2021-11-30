@@ -16,9 +16,6 @@
             <column name="mdp" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="contenu" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
             <column name="mail" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
@@ -58,13 +55,10 @@
                 <constraints nullable="false"/>
             </column>
             <column name="note" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="fiabilite" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="redacteur" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="utilisateur_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_fiche_utilisateur" referencedTableName="utilisateur"
@@ -73,6 +67,9 @@
             <column name="wiki_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_fiche_wiki" referencedTableName="wiki"
                              referencedColumnNames="wiki_id"/>
+            </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="true" />
             </column>
         </createTable>
     </changeSet>
