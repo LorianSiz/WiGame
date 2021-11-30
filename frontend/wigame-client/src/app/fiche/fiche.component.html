@@ -1,3 +1,14 @@
 <p>fiche works!</p>
-<p >{{id}}</p>
-<p >{{titre}}</p>
+
+<div id="header">
+  <p id="titre">{{fiche.titre}}</p>
+  <h1 id="redacteur">{{fiche.user}}</h1>
+</div>
+<div id="body">
+  <p id="contenu">{{fiche.contenu}}</p>
+  <div id="notation">
+    <p id="Note">Note : {{fiche.note}} </p>
+    <p id="fiabilite">Fiabilite : {{fiche.fiabilite}}</p>
+  </div>
+</div>
+

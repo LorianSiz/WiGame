@@ -21,7 +21,8 @@ public class FicheService {
         if (fiche.isPresent()) {
             return mapper.toDTO(fiche.get());
         } else {
-            throw new Exception("Fiche with id " + id + " not found");
+            return new FicheDTO();
+            // throw new Exception("Fiche with id " + id + " not found");
         }
     }
 
