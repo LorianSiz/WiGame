@@ -12,4 +12,14 @@ import java.util.List;
 public class FicheController {
 
     private final FicheService ficheService;
+
+    @GetMapping("{id}")
+    public FicheDTO getFicheById(Long id) throws Exception {
+        return ficheService.getFicheById(id);
+    }
+
+    @PostMapping
+    public FicheDTO createFiche(FicheDTO ficheDTO){
+        return ficheService.createFiche(ficheDTO);
+    }
 }

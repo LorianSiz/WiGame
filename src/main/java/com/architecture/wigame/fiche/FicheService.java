@@ -15,13 +15,13 @@ public class FicheService {
     private final FicheRepository repository;
     private final FicheMapper mapper;
 
-    /*
-    public FicheDTO getFicheById(Long id) {
+
+    public FicheDTO getFicheById(Long id) throws Exception {
         Optional<Fiche> fiche = repository.findById(id);
         if (fiche.isPresent()) {
             return mapper.toDTO(fiche.get());
         } else {
-            //throw new Exception("Fiche with id " + id + " not found");
+            throw new Exception("Fiche with id " + id + " not found");
         }
     }
 
@@ -32,13 +32,14 @@ public class FicheService {
     }
 
     //@Transactional
+    /*
     public FicheDTO updateFiche(FicheDTO FicheDTO){
         Optional<Fiche> ficheOpt = repository.findById(FicheDTO.getId());
         if(ficheOpt.isPresent()){
             Fiche fiche = mapper.toEntity(FicheDTO);
             return mapper.toDTO(repository.save(fiche));
         } else {
-            //throw new ResourceNotFoundException("fiche " + FicheDTO.getName() + " does not exist when trying to update");
+            throw new ResourceNotFoundException("fiche " + FicheDTO.getName() + " does not exist when trying to update");
         }
     }*/
 }

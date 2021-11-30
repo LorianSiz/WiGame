@@ -7,9 +7,15 @@ import { fiche } from './fiche';
   styleUrls: ['./fiche.component.css'],
 })
 export class FicheComponent implements OnInit {
-  constructor(private id : number, private titre : string, private contenu : string, private user : string) { }
+  id : number | undefined;
+  titre : string | undefined;
+  contenu : string |undefined;
+  user : string | undefined;
+
+  constructor() { }
 
   ngOnInit(): void {
+
   }
 
   NoteFicheAuto() : void {
