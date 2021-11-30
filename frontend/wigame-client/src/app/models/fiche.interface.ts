@@ -1,4 +1,4 @@
-export interface fiche {
+export interface Fiche {
   id?: number;
   titre?: string;
   categorie?:string;

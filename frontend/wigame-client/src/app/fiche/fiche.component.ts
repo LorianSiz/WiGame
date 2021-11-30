@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {fiche} from '../models/fiche.interface';
+import {Fiche} from '../models/fiche.interface';
 import {FicheService} from "../services/fiche.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {FicheService} from "../services/fiche.service";
   styleUrls: ['./fiche.component.css'],
 })
 export class FicheComponent implements OnInit {
-  fiche! : fiche;
+  fiche! : Fiche;
   idFiche = "1";
 
   constructor(private ficheservice : FicheService) {  }
