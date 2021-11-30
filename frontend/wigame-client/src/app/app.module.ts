@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { FicheComponent } from './fiche/fiche.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FicheComponent } from './fiche/fiche.component';
     FicheComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

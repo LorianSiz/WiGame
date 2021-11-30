@@ -15,16 +15,17 @@ public class WikiService {
 
     private final WikiRepository repository;
     private final WikiMapper mapper;
-    /*
+
     public WikiDTO getWikiById(Long id) {
         Optional<Wiki> wiki = repository.findById(id);
         if (wiki.isPresent()) {
             return mapper.toDTO(wiki.get());
         } else {
+            return new WikiDTO();
             //throw new Exception("Wiki with id " + id + " not found");
         }
     }
-
+    /*
     public WikiDTO createWiki(WikiDTO WikiDTO){
         Wiki wiki = mapper.toEntity(WikiDTO);
         Wiki savedWiki = repository.save(wiki);

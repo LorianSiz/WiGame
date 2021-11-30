@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FicheComponent} from "../fiche/fiche.component";
+import {Wiki} from "../models/wiki.interface";
+import {WikiService} from "../services/wiki.service";
 
 @Component({
   selector: 'app-wiki',
@@ -7,16 +8,21 @@ import {FicheComponent} from "../fiche/fiche.component";
   styleUrls: ['./wiki.component.css']
 })
 export class WikiComponent implements OnInit {
-  id: number = 0;
-  name: String = "";
-  categorie: String = "";
-  createur : String = "";
-  lstFiche: FicheComponent[] = [];
+  wiki!: Wiki;
+  idWiki = "1";
 
-  constructor() {
-  }
+
+
+  constructor(private wikiService : WikiService) { }
 
   ngOnInit(): void {
+    this.loadWiki();
+  }
+
+  loadWiki(): void {
+    this.wikiService.getWikiById(this.idWiki).subscribe((data) => {
+      this.wiki = data;
+    });
   }
 
 }

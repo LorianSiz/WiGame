@@ -11,4 +11,9 @@ import java.util.List;
 public class WikiController {
 
     private final WikiService wikiService;
+
+    @GetMapping("{id}")
+    public WikiDTO getWikiById(@PathVariable Long id) {
+        return wikiService.getWikiById(id);
+    }
 }
