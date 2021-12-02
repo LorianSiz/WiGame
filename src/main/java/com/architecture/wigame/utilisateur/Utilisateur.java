@@ -31,4 +31,8 @@ public class Utilisateur {
     public Utilisateur()  {
         super();
     }
+
+    public String getRole() {
+        return "RoleBase"; //WIP
+    }
 }

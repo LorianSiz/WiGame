@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {AccueilComponent} from "./accueil/accueil.component";
+import {ConnexionComponent} from "./connexion/connexion.component";
 import {WikiComponent} from "./wiki/wiki.component";
 import {FicheComponent} from "./fiche/fiche.component";
 import {RouterModule, Routes} from "@angular/router";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  //{ path: '',  redirectTo: 'login', pathMatch: 'full' },
+  { path: 'accueil',  component: AccueilComponent },
+  { path: 'connexion', component: ConnexionComponent },
   { path: 'wiki', component: WikiComponent },
   { path: 'fiche', component: FicheComponent },
 ];
 
 @NgModule({
-  providers: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
