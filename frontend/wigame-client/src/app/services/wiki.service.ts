@@ -17,16 +17,17 @@ export class WikiService {
   }
 
   /*
-  getAllOrganizations(): Observable<Organization[]> {
-    return this.httpClient.get<Organization[]>(`${this.baseUrl}`);
-  }
-
-  createOrganization(organization: Organization): Observable<Organization> {
-    return this.httpClient.post(`${this.baseUrl}`, organization);
-  }
-
-  updateOrganization(organization: Organization): Observable<Organization> {
-    return this.httpClient.put(`${this.baseUrl}`, organization);
+  getAllWikis(): Observable<Wiki[]> {
+    return this.httpClient.get<Wiki[]>(`${this.baseUrl}`);
   }
   */
+
+  createWiki(wiki: Wiki): Observable<Wiki> {
+    return this.httpClient.post(`${this.baseUrl}`, wiki);
+  }
+
+  updateWiki(wiki: Wiki): Observable<Wiki> {
+    return this.httpClient.put(`${this.baseUrl}`, wiki);
+  }
+
 }
