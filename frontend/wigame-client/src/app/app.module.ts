@@ -12,13 +12,15 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { AuthService } from './core/guards/auth.service';
 import { AccessGuard } from './core/guards/access-guard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WikiComponent,
     FicheComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    AccueilComponent
   ],
   imports: [
     HttpClientModule,
