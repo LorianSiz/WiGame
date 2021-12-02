@@ -1,11 +1,14 @@
 package com.architecture.wigame.utilisateur;
 
+import com.architecture.wigame.utilisateur.Utilisateur;
+import com.architecture.wigame.utilisateur.UtilisateurDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 //import javax.transaction.Transactional;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -43,21 +46,22 @@ public class UtilisateurService {
         }
     }
 
-    /*public UtilisateurDTO createUtilisateur(UtilisateurDTO UtilisateurDTO){
+    public UtilisateurDTO createUtilisateur(UtilisateurDTO UtilisateurDTO){
         Utilisateur utilisateur = mapper.toEntity(UtilisateurDTO);
         Utilisateur savedUtilisateur = repository.save(utilisateur);
         return mapper.toDTO(savedUtilisateur);
     }
 
-    //@Transactional
+    @Transactional
     public UtilisateurDTO updateUtilisateur(UtilisateurDTO UtilisateurDTO){
         Optional<Utilisateur> utilisateurOpt = repository.findById(UtilisateurDTO.getId());
-        if(UtilisateurOpt.isPresent()){
+        if(utilisateurOpt.isPresent()){
             Utilisateur utilisateur = mapper.toEntity(UtilisateurDTO);
             return mapper.toDTO(repository.save(utilisateur));
         } else {
-            //throw new ResourceNotFoundException("utilisateur " + UtilisateurDTO.getName() + " does not exist when trying to update");
+            return new UtilisateurDTO();
+            // throw new ResourceNotFoundException("utilisateur " + UtilisateurDTO.getName() + " does not exist when trying to update");
         }
-    }*/
+    }
 
 }

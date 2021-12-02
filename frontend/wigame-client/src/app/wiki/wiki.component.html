@@ -1,12 +1,24 @@
 <div>
-  <h2><!--{{wiki.name}}--></h2>
-  <br>
-  <br>
+  <div class="header">
 
-  <p>Catégorie : <!--{{wiki.categorie}}--></p>
-  <br>
+    <h2>{{wiki.name}}</h2>
+    <br/>
+    <br/>
+    <p>Créer par : {{wiki.createur}}</p>
+    <br/>
+    <p>Catégorie : {{wiki.categorie}}</p>
+    <br/>
 
-  <p>Créer par : <!--{{wiki.createur}}--></p>
-  <br>
+  </div>
+
+  <br/>
+
+  <div class="body">
+
+    <ul>
+      <li *ngFor="let fiche of wiki.listFiche">{{fiche.name}}</li>
+    </ul>
+
+  </div>
 
 </div>

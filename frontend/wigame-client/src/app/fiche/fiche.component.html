@@ -1,3 +1,18 @@
-<p>fiche works!</p>
-<p >{{id}}</p>
-<p >{{titre}}</p>
+
+<div id="headerFiche">
+  <p id="categorie"> Categorie : {{fiche.categorie}}</p>
+  <p id="titre">{{fiche.titre}}</p> yes <3
+  <h1 id="redacteur">{{fiche.user}}</h1>
+</div>
+
+<div id="bodyFiche">
+  <p id="contenu">{{fiche.contenu}}</p>
+  <a href={{fiche.URL}} id="URL"> Source : {{fiche.URL}}</a>
+  <div id="notation">
+    <p id="Note">Note : {{fiche.note}} </p>
+    <p id="fiabilite">Fiabilite : {{fiche.fiabilite}}</p>
+  </div>
+</div>
+
+<div id="footerFiche"> <p> Meci d'avoir lu bg, mtn fais un don sur mon paypal stp </p> </div>
+

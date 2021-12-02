@@ -11,8 +11,6 @@ export class WikiComponent implements OnInit {
   wiki: Wiki;
   idWiki = "1";
 
-
-
   constructor(private wikiService : WikiService) { }
 
   ngOnInit(): void {

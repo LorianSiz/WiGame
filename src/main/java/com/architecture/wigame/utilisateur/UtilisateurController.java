@@ -1,10 +1,17 @@
 package com.architecture.wigame.utilisateur;
 
 import com.architecture.wigame.wiki.WikiDTO;
+import com.architecture.wigame.utilisateur.Utilisateur;
+import com.architecture.wigame.utilisateur.UtilisateurDTO;
+import com.architecture.wigame.utilisateur.UtilisateurDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;
+
+import javax.transaction.Transactional;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("utilisateur")
@@ -27,6 +34,18 @@ public class UtilisateurController {
                 passwordEncoder.encode("123")
         );
         return this.utilisateurService.connexion(userDto);
+    }
+
+    @PostMapping
+    //@Secured({"ROLE_TOP_MANAGER", "ROLE_HUMAN_RESOURCE"})
+    public UtilisateurDTO createUtilisateur(@RequestBody UtilisateurDTO orga) {
+        return this.utilisateurService.createUtilisateur(orga);
+    }
+
+    @PutMapping
+    //@Secured({"ROLE_TOP_MANAGER", "ROLE_HUMAN_RESOURCE"})
+    public UtilisateurDTO updateUtilisateur(@RequestBody UtilisateurDTO orga) {
+        return this.utilisateurService.updateUtilisateur(orga);
     }
 
 }

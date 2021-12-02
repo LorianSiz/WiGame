@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { fiche } from './fiche';
+import {Fiche} from '../models/fiche.interface';
+import {FicheService} from "../services/fiche.service";
 
 @Component({
   selector: 'app-fiche',
@@ -7,22 +8,18 @@ import { fiche } from './fiche';
   styleUrls: ['./fiche.component.css'],
 })
 export class FicheComponent implements OnInit {
-  id: number = 0;
-  titre : string = "";
-  contenu : string = "";
-  user : string = "";
+  fiche! : Fiche;
+  idFiche = "1";
 
-  constructor() { }
+  constructor(private ficheservice : FicheService) {  }
 
   ngOnInit(): void {
   }
 
-  NoteFicheAuto() : void {
-
-  }
-
-  NoteFiche() : void {
-
+  loadFiche() : void {
+    this.ficheservice.getFicheById(this.idFiche).subscribe((data)=> {
+      this.fiche = data;
+    });
   }
 
 }

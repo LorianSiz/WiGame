@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { AccueilComponent } from './accueil/accueil.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +16,6 @@ import { TokenInterceptor } from './core/interceptor/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent,
     WikiComponent,
     FicheComponent,
     ConnexionComponent
