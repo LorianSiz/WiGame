@@ -22,9 +22,8 @@ export class FicheService {
   createOrganization(fiche: Fiche): Observable<Fiche> {
     return this.httpClient.post(`${this.baseUrl}`, fiche);
   }
-/*
-  updateOrganization(organization: Organization): Observable<Organization> {
-    return this.httpClient.put(`${this.baseUrl}`, organization);
+
+  updateOrganization(fiche: Fiche): Observable<Fiche> {
+    return this.httpClient.put(`${this.baseUrl}`, fiche);
   }
-  */
 }

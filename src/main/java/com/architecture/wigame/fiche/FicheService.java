@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 //import javax.transaction.Transactional;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,7 +17,7 @@ public class FicheService {
     private final FicheMapper mapper;
 
 
-    public FicheDTO getFicheById(Long id) throws Exception {
+    public FicheDTO getFicheById(Long id) {
         Optional<Fiche> fiche = repository.findById(id);
         if (fiche.isPresent()) {
             return mapper.toDTO(fiche.get());
@@ -32,15 +33,15 @@ public class FicheService {
         return mapper.toDTO(savedFiche);
     }
 
-    //@Transactional
-    /*
+    @Transactional
     public FicheDTO updateFiche(FicheDTO FicheDTO){
         Optional<Fiche> ficheOpt = repository.findById(FicheDTO.getId());
         if(ficheOpt.isPresent()){
             Fiche fiche = mapper.toEntity(FicheDTO);
             return mapper.toDTO(repository.save(fiche));
         } else {
-            throw new ResourceNotFoundException("fiche " + FicheDTO.getName() + " does not exist when trying to update");
+            return FicheDTO;
+            // throw new ResourceNotFoundException("fiche " + FicheDTO.getTitre() + " does not exist when trying to update");
         }
-    }*/
+    }
 }
