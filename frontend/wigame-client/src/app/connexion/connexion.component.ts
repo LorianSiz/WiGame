@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../core/guards/auth.service';
-import {forkJoin} from "rxjs";
-import {UtilisateurService} from "../services/utilisateur.service";
+import { forkJoin } from "rxjs";
+import { UtilisateurService } from "../services/utilisateur.service";
 
 @Component({
   selector: 'app-connexion',
@@ -16,7 +16,6 @@ export class ConnexionComponent implements OnInit {
   mdp : string;
   errorMessage = 'Erreur d\'authentifcation';
   invalidLogin = false;
-  loginSuccess = false;
 
   constructor(private authService: AuthService,
               private utilisateurService: UtilisateurService,
@@ -27,7 +26,7 @@ export class ConnexionComponent implements OnInit {
   ngOnInit(): void {
     this.formConnexionUtilisateur = new FormGroup({
       pseudo: new FormControl('', [Validators.required]),
-      mdp: new FormControl('', [Validators.required]),
+      mdp: new FormControl('', [Validators.required])
     });
   }
 
@@ -41,11 +40,9 @@ export class ConnexionComponent implements OnInit {
         (data) => {
           if (data[1] === null) {
             this.invalidLogin = true;
-            this.loginSuccess = false;
             return;
           }
           this.invalidLogin = false;
-          this.loginSuccess = true;
 
           this.authService.setAccessToken(data[0].access_token);
           this.authService.setUserName(<string>data[1].pseudo);
