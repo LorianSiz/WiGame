@@ -14,6 +14,7 @@ import { AccessGuard } from './core/guards/access-guard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CreateFicheComponent } from './create-fiche/create-fiche.component';
+import { UpdateFicheComponent } from './update-fiche/update-fiche.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CreateFicheComponent } from './create-fiche/create-fiche.component';
     FicheComponent,
     ConnexionComponent,
     AccueilComponent,
-    CreateFicheComponent
+    CreateFicheComponent,
+    UpdateFicheComponent
   ],
   imports: [
     HttpClientModule,

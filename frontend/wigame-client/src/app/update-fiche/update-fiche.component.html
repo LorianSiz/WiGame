@@ -1,0 +1,13 @@
+<div class="headerUpdateFiche">
+  <h2>Modification de fiche</h2>
+</div>
+<div class="panel panel-default">
+  <form [formGroup]="formUpdateFiche" (ngSubmit)="OnSubmit()">
+    <div>
+      <input type="text" aria-describedby="Titre : " value={{fiche.titre}} formControlName="titre">
+      <input type="text" aria-describedby="Contenu : " value={{fiche.contenu}} formControlName="contenu">
+      <input type="text" aria-describedby="URL source (non obligatoire) : " value={{fiche.url}} formControlName="url">
+    </div>
+    <input type="submit" value="Modifier la fiche"/>
+  </form>
+</div>
