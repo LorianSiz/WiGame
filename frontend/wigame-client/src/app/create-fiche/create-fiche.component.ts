@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {FicheService} from "../services/fiche.service";
 import {AuthService} from "../core/guards/auth.service";
-import {UtilisateurService} from "../services/utilisateur.service";
-import {ActivatedRoute} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Fiche} from "../models/fiche.interface";
 
 @Component({
   selector: 'app-create-fiche',
@@ -12,13 +11,13 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 
 export class CreateFicheComponent implements OnInit {
+  submitTest = false;
   titre: string;
   contenu: string;
   url: string;
 
   constructor(private authService: AuthService,
-              private ficheService: FicheService,
-              private route: ActivatedRoute) {}
+              private ficheService: FicheService) {}
 
   formCreationFiche : FormGroup;
 
@@ -31,6 +30,30 @@ export class CreateFicheComponent implements OnInit {
   }
 
   OnSubmit() {
+    if (this.formCreationFiche.valid) {
+      this.submitTest = true
+      const fiche = this.getObjectFromForm();
+      if (fiche != null) {
+        this.ficheService.createFiche(fiche);
+      }
+    }
+  }
 
+  getObjectFromForm() : Fiche {
+    return {
+      titre : this.formCreationFiche.value.titre,
+      contenu : this.formCreationFiche.value.contenu,
+      url : this.formCreationFiche.value.contenu,
+    }
+  }
+
+  testTitre() {
+    return ((!this.formCreationFiche.controls["titre"].valid && this.formCreationFiche.controls["titre"].touched) ||
+      (this.submitTest && !this.formCreationFiche.controls["titre"].valid));
+  }
+
+  testContenu() {
+    return ((!this.formCreationFiche.controls["contenu"].valid && this.formCreationFiche.controls["contenu"].touched) ||
+      (this.submitTest && !this.formCreationFiche.controls["contenu"].valid));
   }
 }

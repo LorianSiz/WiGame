@@ -5,7 +5,13 @@
   <form [formGroup]="formCreationFiche" (ngSubmit)="OnSubmit()">
     <div>
       <input type="text" aria-describedby="Titre : " placeholder="Titre" formControlName="titre">
+      <div class="pb" *ngIf="testTitre()">
+        Titre Nécéssaire
+      </div>
       <input type="text" aria-describedby="Contenu : " placeholder="Contenu" formControlName="contenu">
+      <div class="pb" *ngIf="testContenu()">
+        Contenu Nécéssaire
+      </div>
       <input type="text" aria-describedby="URL source (non obligatoire) : " placeholder="URL" formControlName="url">
     </div>
     <input type="submit" value="Creer la fiche"/>
