@@ -31,7 +31,7 @@ public class UtilisateurController {
     @PostMapping("connexion")
     public UtilisateurDTO connexion(@RequestBody UtilisateurDTO userDto) {
         System.out.println(
-                passwordEncoder.encode("123")
+                passwordEncoder.encode("123")// ENLEVER SVP
         );
         return this.utilisateurService.connexion(userDto);
     }

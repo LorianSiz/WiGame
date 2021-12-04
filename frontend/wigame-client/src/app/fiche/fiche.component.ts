@@ -14,6 +14,7 @@ export class FicheComponent implements OnInit {
   constructor(private ficheservice : FicheService) {  }
 
   ngOnInit(): void {
+    this.loadFiche();
   }
 
   loadFiche() : void {
