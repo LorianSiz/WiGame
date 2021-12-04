@@ -4,11 +4,13 @@ import {ConnexionComponent} from "./connexion/connexion.component";
 import {WikiComponent} from "./wiki/wiki.component";
 import {FicheComponent} from "./fiche/fiche.component";
 import {RouterModule, Routes} from "@angular/router";
+import {InscriptionComponent} from "./inscription/inscription.component";
 
 
 const routes: Routes = [
   { path: '',  redirectTo: 'accueil', pathMatch: 'full' },
   { path: 'accueil',  component: AccueilComponent },
+  { path: 'inscription', component: InscriptionComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'wiki', component: WikiComponent },
   { path: 'fiche', component: FicheComponent },

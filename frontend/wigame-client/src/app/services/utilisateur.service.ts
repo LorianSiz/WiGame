@@ -38,4 +38,8 @@ export class UtilisateurService {
     return this.http.post<boolean>(`${this.baseUrl}/creer`, utilisateur);
   }
 
+  isExistsByPseudo(pseudo: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}/verifier/${pseudo}`);
+  }
+
 }

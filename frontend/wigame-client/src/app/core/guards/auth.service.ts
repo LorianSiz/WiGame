@@ -9,7 +9,7 @@ export class AuthService {
   constructor() { }
 
   getUserName(): string {
-    return JSON.parse(<string>localStorage.getItem('userName'));
+    return JSON.parse(<string>localStorage.getItem('pseudo'));
   }
 
   setUserName(pseudo: string): void {
@@ -25,10 +25,8 @@ export class AuthService {
   }
 
   clearStorage(): void {
-    localStorage.removeItem('roles');
-    localStorage.removeItem('userName');
+    localStorage.removeItem('pseudo');
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('idPerson');
   }
 
 }

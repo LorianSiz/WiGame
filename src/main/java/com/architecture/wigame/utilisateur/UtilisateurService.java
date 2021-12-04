@@ -48,8 +48,8 @@ public class UtilisateurService {
 
     public UtilisateurDTO createUtilisateur(UtilisateurDTO UtilisateurDTO){
         Utilisateur utilisateur = mapper.toEntity(UtilisateurDTO);
-        Utilisateur savedUtilisateur = repository.save(utilisateur);
-        return mapper.toDTO(savedUtilisateur);
+        utilisateur.setMdp(passwordEncoder.encode(utilisateur.getMdp()));
+        return mapper.toDTO(repository.save(utilisateur));
     }
 
     @Transactional
@@ -60,8 +60,11 @@ public class UtilisateurService {
             return mapper.toDTO(repository.save(utilisateur));
         } else {
             return new UtilisateurDTO();
-            // throw new ResourceNotFoundException("utilisateur " + UtilisateurDTO.getName() + " does not exist when trying to update");
         }
+    }
+
+    public boolean isExistsByPseudo(String pseudo) {
+        return repository.findByPseudo(pseudo).isPresent();
     }
 
 }

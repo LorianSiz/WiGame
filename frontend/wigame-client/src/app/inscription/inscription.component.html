@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Inscription</h2>
+  </div>
+  <div class="panel panel-default">
+    <form [formGroup]="formInscriptionUtilisateur" (ngSubmit)="onSubmit()">
+      <div class="panel-body bg-light text-dark">
+        <table class="table table-striped">
+          <tr>
+            <td>
+              <input type="text" class="form-control d-inline p-2" aria-describedby="Entrer un pseudo" placeholder="Pseudo" id="pseudo" formControlName="pseudo">
+              <div class="text-danger" *ngIf="testPseudo()">
+                Pseudo nécessaire
+              </div>
+            </td>
+            <td>
+              <input type="email" class="form-control d-inline p-2" aria-describedby="Entrer une adresse mail" placeholder="Mail" id="mail" formControlName="mail">
+              <div class="text-danger" *ngIf="testMail()">
+                Adresse mail nécessaire
+              </div>
+            </td>
+            <td>
+              <input type="password" class="form-control d-inline p-2" aria-describedby="Entrer un mot de passe" placeholder="Mot de passe" id="password" formControlName="mdp">
+              <div class="text-danger" *ngIf="testMdp()">
+                Mot de passe nécessaire
+              </div>
+            </td>
+            <td>
+              <input type="password" class="form-control d-inline p-2" aria-describedby="Confirmer le mot de passe" placeholder="Confirmer mot de passe" id="confirmation" formControlName="confirmation">
+              <div class="text-danger" *ngIf="testConfirmation()">
+                Le mot de passe ne correspond pas
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="alert alert-warning" *ngIf='invalidInscription'>{{errorMessage}}</div>
+        <input type="submit" class="btn btn-primary" value="S'inscrire"/>
+      </div>
+    </form>
+  </div>
+</div>

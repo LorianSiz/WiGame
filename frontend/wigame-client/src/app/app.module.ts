@@ -13,6 +13,7 @@ import { AuthService } from './core/guards/auth.service';
 import { AccessGuard } from './core/guards/access-guard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { AccueilComponent } from './accueil/accueil.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AccueilComponent } from './accueil/accueil.component';
     WikiComponent,
     FicheComponent,
     ConnexionComponent,
-    AccueilComponent
+    AccueilComponent,
+    InscriptionComponent
   ],
   imports: [
     HttpClientModule,
