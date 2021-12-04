@@ -23,7 +23,7 @@ import { CreateFicheComponent } from './create-fiche/create-fiche.component';
     FicheComponent,
     ConnexionComponent,
     AccueilComponent,
-    InscriptionComponent
+    InscriptionComponent,
     AccueilComponent,
     CreateFicheComponent
   ],
