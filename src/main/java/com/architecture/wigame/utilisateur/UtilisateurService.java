@@ -67,4 +67,14 @@ public class UtilisateurService {
         return repository.findByPseudo(pseudo).isPresent();
     }
 
+    public UtilisateurDTO findByPseudo(String pseudo) {
+        Optional<Utilisateur> utilisateurOpt = repository.findByPseudo(pseudo);
+        if(utilisateurOpt.isPresent()) {
+            utilisateurOpt.get().setMdp("0");
+            return mapper.toDTO(utilisateurOpt.get());
+        } else {
+            return new UtilisateurDTO();
+        }
+    }
+
 }

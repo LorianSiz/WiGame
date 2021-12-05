@@ -8,6 +8,9 @@
     <li class="nav-item" *ngIf="!isConnecte()">
       <a routerLink="inscription" class="nav-link" routerLinkActive="active">S'inscrire</a>
     </li>
+    <li class="nav-item" *ngIf="isConnecte()">
+      <a routerLink="creer/wiki" class="nav-link" routerLinkActive="active">Créer un wiki</a>
+    </li>
     <li class="nav-item" *ngIf="!isConnecte()">
       <a routerLink="connexion" class="nav-link" routerLinkActive="active">Se connecter</a>
     </li>

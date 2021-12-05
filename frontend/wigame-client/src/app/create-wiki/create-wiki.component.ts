@@ -4,6 +4,7 @@ import {AuthService} from "../core/guards/auth.service";
 import {WikiService} from "../services/wiki.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Wiki} from "../models/wiki.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-wiki',
@@ -15,14 +16,18 @@ export class CreateWikiComponent implements OnInit {
 
   titre: string;
   categorie: string;
-  listFiche : Fiche[];
+  listeFiche : Fiche[];
 
   constructor(private authService: AuthService,
-              private wikiService: WikiService) { }
+              private wikiService: WikiService,
+              private router: Router) { }
 
   formCreationWiki : FormGroup;
 
   ngOnInit(): void {
+    if(!this.authService.isConnecte()) {
+      this.router.navigate(['connexion']);
+    }
     this.formCreationWiki = new FormGroup({
       titre: new FormControl('', [Validators.required]),
       categorie: new FormControl('', [Validators.required])
@@ -43,7 +48,7 @@ export class CreateWikiComponent implements OnInit {
     return {
       titre : this.formCreationWiki.value.titre,
       categorie : this.formCreationWiki.value.categorie,
-      listFiche : this.listFiche,
+      listeFiche : this.listeFiche,
     }
   }
 

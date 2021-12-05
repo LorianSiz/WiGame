@@ -29,4 +29,8 @@ export class AuthService {
     localStorage.removeItem('accessToken');
   }
 
+  isConnecte() {
+    return ((this.getUserName() != null) && (this.getAccessToken() != null));
+  }
+
 }

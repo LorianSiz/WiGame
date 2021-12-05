@@ -42,4 +42,8 @@ export class UtilisateurService {
     return this.http.get<boolean>(`${this.baseUrl}/verifier/${pseudo}`);
   }
 
+  findByPseudo(pseudo: string): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(`${this.baseUrl}/recuperer/${pseudo}`);
+  }
+
 }

@@ -8,5 +8,6 @@ export interface Fiche {
   note?: number;
   fiabilite?: number;
   redacteur?: Utilisateur;
+  wikiId?: string;
   url?: string;
 }

@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private authService: AuthService) {}
 
   isConnecte() {
-    return ((this.authService.getUserName() != null) && (this.authService.getAccessToken() != null));
+    return this.authService.isConnecte();
   }
 
   deconnecter() {

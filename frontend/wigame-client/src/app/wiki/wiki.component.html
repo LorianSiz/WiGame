@@ -2,6 +2,11 @@
   <div class="header">
 
     <h2>{{titre}}</h2>
+
+    <div *ngIf="isConnecte()">
+      <p><a routerLink="/creer/fiche/{{wikiId}}" routerLinkActive="active">Ajouter une fiche</a></p>
+    </div>
+
     <br/>
     <br/>
     <p>Créer par : {{createur}}</p>

@@ -45,4 +45,9 @@ public class UtilisateurController {
         return utilisateurService.isExistsByPseudo(pseudo);
     }
 
+    @GetMapping("recuperer/{pseudo}")
+    public UtilisateurDTO findByPseudo(@PathVariable String pseudo) {
+        return utilisateurService.findByPseudo(pseudo);
+    }
+
 }

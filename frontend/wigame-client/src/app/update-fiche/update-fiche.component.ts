@@ -3,6 +3,7 @@ import {AuthService} from "../core/guards/auth.service";
 import {FicheService} from "../services/fiche.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Fiche} from "../models/fiche.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-fiche',
@@ -20,11 +21,15 @@ export class UpdateFicheComponent implements OnInit {
   errorMessage: string;
 
   constructor(private authService: AuthService,
-              private ficheService : FicheService) { }
+              private ficheService : FicheService,
+              private router: Router) { }
 
   formUpdateFiche : FormGroup;
 
   ngOnInit(): void {
+    if(!this.authService.isConnecte()) {
+      this.router.navigate(['connexion']);
+    }
     this.ficheService.getFicheById("1").subscribe((data)=> {
       this.fiche = data;
     });

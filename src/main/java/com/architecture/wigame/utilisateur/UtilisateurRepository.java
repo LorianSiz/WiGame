@@ -7,6 +7,5 @@ import java.util.Optional;
 
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
-    Utilisateur getByPseudo(String pseudo);
     Optional<Utilisateur> findByPseudo(String pseudo);
 }
