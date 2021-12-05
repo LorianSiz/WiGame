@@ -19,12 +19,10 @@ public class FicheController {
         return ficheService.getFicheById(id); }
 
     @PostMapping
-    public FicheDTO createFiche(FicheDTO ficheDTO){
+    public FicheDTO createFiche(@RequestBody FicheDTO ficheDTO){
         return ficheService.createFiche(ficheDTO);
     }
 
     @PutMapping
-    public FicheDTO updateFiche(FicheDTO ficheDTO){
-        return ficheService.createFiche(ficheDTO);
-    }
+    public FicheDTO updateFiche(@RequestBody FicheDTO ficheDTO) { return ficheService.updateFiche(ficheDTO); }
 }

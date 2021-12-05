@@ -13,8 +13,9 @@ import { AuthService } from './core/guards/auth.service';
 import { AccessGuard } from './core/guards/access-guard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { AccueilComponent } from './accueil/accueil.component';
-import { InscriptionComponent } from './inscription/inscription.component';
 import { CreateFicheComponent } from './create-fiche/create-fiche.component';
+import { UpdateFicheComponent } from './update-fiche/update-fiche.component';
+import {InscriptionComponent} from "./inscription/inscription.component";
 
 @NgModule({
   declarations: [
@@ -24,8 +25,8 @@ import { CreateFicheComponent } from './create-fiche/create-fiche.component';
     ConnexionComponent,
     AccueilComponent,
     InscriptionComponent,
-    AccueilComponent,
-    CreateFicheComponent
+    CreateFicheComponent,
+    UpdateFicheComponent
   ],
   imports: [
     HttpClientModule,
