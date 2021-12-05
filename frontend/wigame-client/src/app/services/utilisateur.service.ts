@@ -19,6 +19,14 @@ export class UtilisateurService {
     this.http = new HttpClient(handler);
   }
 
+  getUtilisateurById(id: string): Observable<Utilisateur> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  updateUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.put(`${this.baseUrl}/updateUtilisateur`, utilisateur);
+  }
+
   connexion(pseudo: string, mdp: string): Observable<Utilisateur> {
     return this.http.post(`${this.baseUrl}/connexion`, { pseudo, mdp });
   }

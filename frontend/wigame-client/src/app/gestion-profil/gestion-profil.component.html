@@ -1,0 +1,50 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Inscription</h2>
+  </div>
+  <div class="panel panel-default">
+    <div>
+      <h4> Pseudo : {{utilisateur.pseudo}} </h4>
+      <h4> mail : {{utilisateur.mail}} </h4>
+    </div>
+    <div>
+      <h5> Page favorite : </h5>
+      <ul>
+        <li> <!-- truc qui liste les fiches en favoris --> </li>
+      </ul>
+    </div>
+    <div>
+      <form  (ngSubmit)="OnSubmit()">
+      <input type="submit" value="Modifier les informations"/>
+      </form>
+    </div>
+    <div *ngIf="testAffichageFormModif()">
+      <form [formGroup]="formModificationUtilisateur" (ngSubmit)="OnSubmitModif()">
+        <div>
+          <div>
+            <input type="text" aria-describedby="Nouveau pseudo : " value={{utilisateur.pseudo}} formControlName="pseudo">
+            <div class="pb" *ngIf="testPseudo()">
+              Pseudo nécéssaire
+            </div>
+          </div>
+          <div>
+            <input type="text" aria-describedby="Nouveau mdp : " formControlName="mdp">
+            <div class="pb" *ngIf="testMdp()">
+              Mot de passe nécéssaire
+            </div>
+          </div>
+          <div>
+          <input type="text" aria-describedby="Nouveau mail : " formControlName="mail">
+          <div class="pb" *ngIf="testMail()">
+            Mail nécéssaire
+          </div>
+        </div>
+        <br>
+        <input type="submit" value="Appliquer les modification"/>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

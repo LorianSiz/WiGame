@@ -17,6 +17,7 @@ import { CreateFicheComponent } from './create-fiche/create-fiche.component';
 import { UpdateFicheComponent } from './update-fiche/update-fiche.component';
 import {InscriptionComponent} from "./inscription/inscription.component";
 import { CreateWikiComponent } from './create-wiki/create-wiki.component';
+import { GestionProfilComponent } from './gestion-profil/gestion-profil.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreateWikiComponent } from './create-wiki/create-wiki.component';
     InscriptionComponent,
     CreateFicheComponent,
     UpdateFicheComponent,
-    CreateWikiComponent
+    CreateWikiComponent,
+    GestionProfilComponent
   ],
   imports: [
     HttpClientModule,
