@@ -20,11 +20,14 @@ export class UpdateFicheComponent implements OnInit {
   errorMessage: string;
 
   constructor(private authService: AuthService,
-              private ficheService: FicheService) { }
+              private ficheService : FicheService) { }
 
   formUpdateFiche : FormGroup;
 
   ngOnInit(): void {
+    this.ficheService.getFicheById("1").subscribe((data)=> {
+      this.fiche = data;
+    });
     this.formUpdateFiche = new FormGroup({
       titre: new FormControl('', [Validators.required]),
       contenu: new FormControl('', [Validators.required]),

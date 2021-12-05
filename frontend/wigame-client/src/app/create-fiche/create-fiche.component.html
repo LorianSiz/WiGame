@@ -1,19 +1,24 @@
-<div class="headerCreationFiche">
+<div class="headerCreationFiche" xmlns="http://www.w3.org/1999/html">
   <h2>Creation de fiche</h2>
 </div>
 <div class="panel panel-default">
   <form [formGroup]="formCreationFiche" (ngSubmit)="OnSubmit()">
     <div>
-      <input type="text" aria-describedby="Titre : " placeholder="Titre" formControlName="titre">
-      <div class="pb" *ngIf="testTitre()">
-        Titre Nécéssaire
+      <div>
+        <input type="text" aria-describedby="Titre : " placeholder="Titre" formControlName="titre">
+        <div class="pb" *ngIf="testTitre()">
+          Titre Nécéssaire
+        </div>
       </div>
-      <input type="text" aria-describedby="Contenu : " placeholder="Contenu" formControlName="contenu">
-      <div class="pb" *ngIf="testContenu()">
-        Contenu Nécéssaire
+      <div>
+        <input type="text" style="width: 95%; height:100px" aria-describedby="Contenu : " placeholder="Contenu" formControlName="contenu">
+        <div class="pb" *ngIf="testContenu()">
+          Contenu Nécéssaire
+        </div>
       </div>
       <input type="text" aria-describedby="URL source (non obligatoire) : " placeholder="URL" formControlName="url">
     </div>
+    <br>
     <input type="submit" value="Creer la fiche"/>
   </form>
 </div>

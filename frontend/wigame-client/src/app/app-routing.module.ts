@@ -14,6 +14,10 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'wiki/:id', component: WikiComponent },
   { path: 'fiche/:id', component: FicheComponent },
+  { path: 'wiki', component: WikiComponent },
+  { path: 'fiche', component: FicheComponent },
+  { path: 'ficheCreation', component: CreateFicheComponent },
+  { path: 'ficheUpdate', component: UpdateFicheComponent }
 ];
 
 @NgModule({
