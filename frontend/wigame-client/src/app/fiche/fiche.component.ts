@@ -16,6 +16,7 @@ export class FicheComponent implements OnInit {
   note: number;
   fiabilite: number;
   idFiche: string;
+  wikiId: string;
 
   constructor(private ficheservice : FicheService,
               private route: ActivatedRoute) {}
@@ -34,6 +35,7 @@ export class FicheComponent implements OnInit {
       this.url = data.url!;
       this.note = data.note!;
       this.fiabilite = data.fiabilite!;
+      this.wikiId = data.wikiId!;
     });
   }
 
