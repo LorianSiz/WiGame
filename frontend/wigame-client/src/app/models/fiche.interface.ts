@@ -7,6 +7,6 @@ export interface Fiche {
   contenu?: string;
   note?: number;
   fiabilite?: number;
-  utilisateur?: Utilisateur;
+  redacteur?: Utilisateur;
   url?: string;
 }

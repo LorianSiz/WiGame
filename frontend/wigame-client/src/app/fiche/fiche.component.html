@@ -7,12 +7,10 @@
 
 <div id="bodyFiche">
   <p id="contenu">{{contenu}}</p>
-  <p  id="URL">Source : <a [href]="url">{{url}}</a></p>
+  <p *ngIf="!isUrlNull()" id="URL">Source : <a [href]="url">{{url}}</a></p>
   <div id="notation">
     <p id="Note">Note : {{note}} </p>
     <p id="fiabilite">Fiabilite : {{fiabilite}}</p>
   </div>
 </div>
-
-<div id="footerFiche"> <p> ceci etre un footer </p> </div>
 

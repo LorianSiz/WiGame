@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Wiki} from "../models/wiki.interface";
+import {WikiService} from "../services/wiki.service";
 
 @Component({
   selector: 'app-accueil',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
+  listeWiki?: Wiki[];
 
-  constructor() { }
+  constructor(private wikiService : WikiService) { }
 
   ngOnInit(): void {
+    this.wikiService.findAllWiki().subscribe((data) => {
+      this.listeWiki = data;
+    });
   }
 
 }

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,6 +43,15 @@ public class WikiService {
             return new WikiDTO();
             // throw new ResourceNotFoundException("wiki " + WikiDTO.getName() + " does not exist when trying to update");
         }
+    }
+
+    public List<WikiDTO> findAllWiki(){
+        List<Wiki> listeWiki = repository.findAll();
+        List<WikiDTO> listeWikiDTO = new ArrayList<>();
+        for (Wiki wiki : listeWiki) {
+            listeWikiDTO.add(mapper.toDTO(wiki));
+        }
+        return listeWikiDTO;
     }
 
 }

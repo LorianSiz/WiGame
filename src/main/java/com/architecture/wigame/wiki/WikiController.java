@@ -26,4 +26,9 @@ public class WikiController {
     public WikiDTO updateWiki(@RequestBody WikiDTO orga) {
         return this.wikiService.updateWiki(orga);
     }
+
+    @GetMapping("recuperer/tout")
+    public List<WikiDTO> findAllWiki() {
+        return wikiService.findAllWiki();
+    }
 }

@@ -15,7 +15,6 @@ public class FicheController {
 
     @GetMapping("recuperer/{id}")
     public FicheDTO getFicheById(@PathVariable("id") Long id) {
-        System.out.println("Contro " + id);
         return ficheService.getFicheById(id); }
 
     @PostMapping

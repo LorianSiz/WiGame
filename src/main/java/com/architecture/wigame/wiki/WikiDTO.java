@@ -14,5 +14,5 @@ public class WikiDTO {
     private String titre;
     private String categorie; //WIP
     private Utilisateur createur;
-    private List<Fiche> listFiche = new ArrayList<>();
+    private List<Fiche> listeFiche = new ArrayList<>();
 }

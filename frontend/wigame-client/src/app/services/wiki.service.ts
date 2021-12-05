@@ -16,18 +16,16 @@ export class WikiService {
     return this.httpClient.get(`${this.baseUrl}/recuperer/${id}`);
   }
 
-  /*
-  getAllWikis(): Observable<Wiki[]> {
-    return this.httpClient.get<Wiki[]>(`${this.baseUrl}`);
-  }
-  */
-
   createWiki(wiki: Wiki): Observable<Wiki> {
     return this.httpClient.post(`${this.baseUrl}`, wiki);
   }
 
   updateWiki(wiki: Wiki): Observable<Wiki> {
     return this.httpClient.put(`${this.baseUrl}`, wiki);
+  }
+
+  findAllWiki(): Observable<Wiki[]> {
+    return this.httpClient.get<Wiki[]>(`${this.baseUrl}/recuperer/tout`);
   }
 
 }

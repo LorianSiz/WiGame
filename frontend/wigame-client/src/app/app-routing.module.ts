@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'accueil',  component: AccueilComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'wiki', component: WikiComponent },
-  { path: 'fiche', component: FicheComponent },
+  { path: 'wiki/:id', component: WikiComponent },
+  { path: 'fiche/:id', component: FicheComponent },
 ];
 
 @NgModule({

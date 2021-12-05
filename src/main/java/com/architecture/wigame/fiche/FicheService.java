@@ -20,10 +20,8 @@ public class FicheService {
     public FicheDTO getFicheById(Long id) {
         Optional<Fiche> fiche = repository.findById(id);
         if (fiche.isPresent()) {
-            System.out.println("l'url ? :" + fiche.get().getUrl());
             return mapper.toDTO(fiche.get());
         } else {
-            System.out.println("Non");
             return new FicheDTO();
             // throw new Exception("Fiche with id " + id + " not found");
         }

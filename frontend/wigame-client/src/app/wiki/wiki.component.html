@@ -1,12 +1,12 @@
 <div>
   <div class="header">
 
-    <h2>{{wiki.titre}}</h2>
+    <h2>{{titre}}</h2>
     <br/>
     <br/>
-    <p>Créer par : {{wiki.createur}}</p>
+    <p>Créer par : {{createur}}</p>
     <br/>
-    <p>Catégorie : {{wiki.categorie}}</p>
+    <p>Catégorie : {{categorie}}</p>
     <br/>
 
   </div>
@@ -15,9 +15,9 @@
 
   <div class="body">
 
-    <!--<ul>
-      <li *ngFor="let fiche of wiki.listFiche">{{fiche.name}}</li>
-    </ul>-->
+    <ul>
+      <li *ngFor="let fiche of listeFiche"><a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">{{fiche.titre}}</a></li>
+    </ul>
 
   </div>
 
