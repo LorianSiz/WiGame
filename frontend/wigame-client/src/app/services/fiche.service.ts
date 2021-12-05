@@ -16,7 +16,7 @@ export class FicheService {
   }
 */
   getFicheById(id: string): Observable<Fiche> {
-    return this.httpClient.get(`${this.baseUrl}/${id}`);
+    return this.httpClient.get(`${this.baseUrl}/recuperer/${id}`);
   }
 
   createFiche(fiche: Fiche): Observable<Fiche> {

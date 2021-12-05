@@ -5,13 +5,19 @@
   <form [formGroup]="formCreationFiche" (ngSubmit)="OnSubmit()">
     <div>
       <div>
-        <input type="text" aria-describedby="Titre : " placeholder="Titre" formControlName="titre">
+        <input type="text" aria-describedby="Titre : " placeholder="Titre" formControlName="titre">*
         <div class="pb" *ngIf="testTitre()">
           Titre Nécéssaire
         </div>
       </div>
       <div>
-        <input type="text" style="width: 95%; height:100px" aria-describedby="Contenu : " placeholder="Contenu" formControlName="contenu">
+        <input type="text" aria-describedby="Categorie : " placeholder="Categorie" formControlName="categorie">*
+        <div class="pb" *ngIf="testCategorie()">
+          Categorie Nécéssaire
+        </div>
+      </div>
+      <div>
+        <input type="text" style="width: 95%; height:100px" aria-describedby="Contenu : " placeholder="Contenu" formControlName="contenu">*
         <div class="pb" *ngIf="testContenu()">
           Contenu Nécéssaire
         </div>

@@ -30,11 +30,8 @@ public class Fiche {
     @OneToOne
     @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur redacteur;
+    @Column(name = "wiki_id")
+    private Long wikiId;
     @Column(name = "url")
     private String url;
-
-
-    public Fiche() {
-        super();
-    }
 }

@@ -7,5 +7,13 @@
     Permettre a nimporte qui de partager des informations relative au jeu video.
   </p>
 
+  <div>
+
+    <ul>
+      <li *ngFor="let wiki of listeWiki"><a routerLink="/wiki/{{wiki.id}}" routerLinkActive="active">{{wiki.titre}}</a></li>
+    </ul>
+
+  </div>
+
 </div>
 

@@ -3,6 +3,8 @@ import {FicheService} from "../services/fiche.service";
 import {AuthService} from "../core/guards/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Fiche} from "../models/fiche.interface";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UtilisateurService} from "../services/utilisateur.service";
 
 @Component({
   selector: 'app-create-fiche',
@@ -12,18 +14,24 @@ import {Fiche} from "../models/fiche.interface";
 
 export class CreateFicheComponent implements OnInit {
   submitTest = false;
-  titre: string;
-  contenu: string;
-  url: string;
+  wikiId: string;
 
   constructor(private authService: AuthService,
-              private ficheService: FicheService) {}
+              private ficheService: FicheService,
+              private utilisateurService: UtilisateurService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   formCreationFiche : FormGroup;
 
   ngOnInit(): void {
+    if(!this.authService.isConnecte()) {
+      this.router.navigate(['connexion']);
+    }
+    this.wikiId = this.route.snapshot.params['wikiId'];
     this.formCreationFiche = new FormGroup({
       titre: new FormControl('', [Validators.required]),
+      categorie: new FormControl('', [Validators.required]),
       contenu: new FormControl('', [Validators.required]),
       url: new FormControl(''),
     });
@@ -33,8 +41,14 @@ export class CreateFicheComponent implements OnInit {
     if (this.formCreationFiche.valid) {
       this.submitTest = true
       const fiche = this.getObjectFromForm();
-      if (fiche != null) {
-        this.ficheService.createFiche(fiche);
+      if (fiche != null && this.authService.isConnecte()) {
+        this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
+          fiche.redacteur = data;
+          fiche.wikiId = this.wikiId;
+          this.ficheService.createFiche(fiche).subscribe((data) => {
+            this.router.navigate(['fiche/' + data.id]);
+          });
+        });
       }
     }
   }
@@ -42,14 +56,20 @@ export class CreateFicheComponent implements OnInit {
   getObjectFromForm() : Fiche {
     return {
       titre : this.formCreationFiche.value.titre,
+      categorie : this.formCreationFiche.value.categorie,
       contenu : this.formCreationFiche.value.contenu,
-      url : this.formCreationFiche.value.contenu,
+      url : this.formCreationFiche.value.url,
     }
   }
 
   testTitre() {
     return ((!this.formCreationFiche.controls["titre"].valid && this.formCreationFiche.controls["titre"].touched) ||
       (this.submitTest && !this.formCreationFiche.controls["titre"].valid));
+  }
+
+  testCategorie() {
+    return ((!this.formCreationFiche.controls["categorie"].valid && this.formCreationFiche.controls["categorie"].touched) ||
+      (this.submitTest && !this.formCreationFiche.controls["categorie"].valid));
   }
 
   testContenu() {

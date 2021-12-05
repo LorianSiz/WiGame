@@ -19,9 +19,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/utilisateur/connexion", "/utilisateur/creer", "/utilisateur/verifier/**", "wiki/**, fiche/**").permitAll()
+                .antMatchers("/utilisateur/connexion").permitAll()
+                .antMatchers("/utilisateur/creer").permitAll()
+                .antMatchers("/utilisateur/verifier/**").permitAll()
+                .antMatchers("/wiki/recuperer/**").permitAll()
+                .antMatchers("/fiche/recuperer/**").permitAll()
+                .antMatchers("/utilisateur/recuperer/**").permitAll()
                 .anyRequest().authenticated();
     }
-
 
 }

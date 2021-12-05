@@ -54,10 +54,10 @@
             <column name="contenu" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="note" type="VARCHAR(255)">
+            <column name="note" type="double" defaultValue="0">
                 <constraints nullable="true"/>
             </column>
-            <column name="fiabilite" type="bigint">
+            <column name="fiabilite" type="bigint" defaultValue="0">
                 <constraints nullable="true"/>
             </column>
             <column name="utilisateur_id" type="bigint">

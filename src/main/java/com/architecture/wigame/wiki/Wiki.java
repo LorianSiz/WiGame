@@ -5,6 +5,7 @@ import com.architecture.wigame.utilisateur.Utilisateur;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -29,9 +30,5 @@ public class Wiki {
     private Utilisateur createur;
     @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     @JoinColumn(name = "wiki_id")
-    private List<Fiche> listeFiche;
-
-    public Wiki() {
-        super();
-    }
+    private List<Fiche> listeFiche = new ArrayList<>();
 }

@@ -40,9 +40,14 @@ public class UtilisateurController {
         return this.utilisateurService.updateUtilisateur(utilisateurDTO);
     }
 
-    @GetMapping("/verifier/{pseudo}")
+    @GetMapping("verifier/{pseudo}")
     public boolean isExistsByPseudo(@PathVariable String pseudo) {
         return utilisateurService.isExistsByPseudo(pseudo);
+    }
+
+    @GetMapping("recuperer/{pseudo}")
+    public UtilisateurDTO findByPseudo(@PathVariable String pseudo) {
+        return utilisateurService.findByPseudo(pseudo);
     }
 
 }

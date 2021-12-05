@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Fiche} from '../models/fiche.interface';
+import { ActivatedRoute } from '@angular/router';
 import {FicheService} from "../services/fiche.service";
 
 @Component({
@@ -8,19 +8,37 @@ import {FicheService} from "../services/fiche.service";
   styleUrls: ['./fiche.component.css'],
 })
 export class FicheComponent implements OnInit {
-  fiche : Fiche;
-  idFiche = "1";
+  titre: string;
+  categorie: string;
+  redacteur: string;
+  contenu: string;
+  url: string;
+  note: number;
+  fiabilite: number;
+  idFiche: string;
 
-  constructor(private ficheservice : FicheService) {  }
+  constructor(private ficheservice : FicheService,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.idFiche = this.route.snapshot.params['id'];
     this.loadFiche();
   }
 
   loadFiche() : void {
     this.ficheservice.getFicheById(this.idFiche).subscribe((data)=> {
-      this.fiche = data;
+      this.titre = data.titre!;
+      this.categorie = data.categorie!;
+      this.redacteur = data.redacteur!.pseudo!;
+      this.contenu = data.contenu!;
+      this.url = data.url!;
+      this.note = data.note!;
+      this.fiabilite = data.fiabilite!;
     });
+  }
+
+  isUrlNull() : boolean {
+    return ((this.url == null) || (this.url.trim() === ""));
   }
 
 }
