@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="cmas" id="create favoris">
+        <createTable tableName="favoris">
+            <column autoIncrement="true" name="favoris_id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_favoris_utilisateur" referencedTableName="utilisateur"
+                             referencedColumnNames="utilisateur_id"/>
+            </column>
+            <column name="fiche_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_favoris_fiche" referencedTableName="fiche"
+                             referencedColumnNames="fiche_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert favoris" author="cmas">
+        <insert tableName="favoris">
+            <column name="fiche_id" value="1"/>
+            <column name="utilisateur_id" value="1"/>
+        </insert>
+        <!-- Rajoute ptet deux ou 3 exemples encore -->
+    </changeSet>
+
+</databaseChangeLog>

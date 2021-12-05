@@ -8,5 +8,6 @@
 
     <include file="/db/changelog/changelog-1.0-init-structure.xml"/>
     <include file="/db/changelog/changelog-1.0-insert-example-data.xml"/>
+    <include file="/db/changelog/changelog-1.0-add-favoris.xml"/>
 
 </databaseChangeLog>
