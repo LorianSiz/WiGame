@@ -4,16 +4,21 @@
 <div class="panel panel-default">
   <form [formGroup]="formUpdateFiche" (ngSubmit)="OnSubmit()">
     <div>
-      <input type="text" aria-describedby="Titre : " value={{fiche.titre}} formControlName="titre">
-      <div class="pb" *ngIf="testTitre()">
-        Titre Nécéssaire
+      <div>
+        <input type="text" aria-describedby="Titre : " value={{fiche.titre}} formControlName="titre">
+        <div class="pb" *ngIf="testTitre()">
+          Titre Nécéssaire
+        </div>
       </div>
-      <input type="text" aria-describedby="Contenu : " value={{fiche.contenu}} formControlName="contenu">
-      <div class="pb" *ngIf="testContenu()">
-        Contenu Nécéssaire
+      <div>
+        <input type="text" style="width: 95%; height:100px" aria-describedby="Contenu : " value={{fiche.contenu}} formControlName="contenu">
+        <div class="pb" *ngIf="testContenu()">
+          Contenu Nécéssaire
+        </div>
       </div>
       <input type="text" aria-describedby="URL source (non obligatoire) : " value={{fiche.url}} formControlName="url">
     </div>
+    <br>
     <input type="submit" value="Modifier la fiche"/>
   </form>
 </div>

@@ -8,7 +8,7 @@ import {FicheService} from "../services/fiche.service";
   styleUrls: ['./fiche.component.css'],
 })
 export class FicheComponent implements OnInit {
-  fiche! : Fiche;
+  fiche : Fiche;
   idFiche = "1";
 
   constructor(private ficheservice : FicheService) {  }

@@ -14,9 +14,7 @@ public class FicheController {
     private final FicheService ficheService;
 
     @GetMapping("{id}")
-    public FicheDTO getFicheById(@PathVariable("id") Long id) {
-        System.out.println("Contro " + id);
-        return ficheService.getFicheById(id); }
+    public FicheDTO getFicheById(@PathVariable("id") Long id) { return ficheService.getFicheById(id); }
 
     @PostMapping
     public FicheDTO createFiche(@RequestBody FicheDTO ficheDTO){
