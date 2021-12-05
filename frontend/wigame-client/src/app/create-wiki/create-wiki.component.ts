@@ -5,6 +5,7 @@ import {WikiService} from "../services/wiki.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Wiki} from "../models/wiki.interface";
 import {Router} from "@angular/router";
+import {UtilisateurService} from "../services/utilisateur.service";
 
 @Component({
   selector: 'app-create-wiki',
@@ -20,6 +21,7 @@ export class CreateWikiComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private wikiService: WikiService,
+              private utilisateurService: UtilisateurService,
               private router: Router) { }
 
   formCreationWiki : FormGroup;
@@ -31,15 +33,20 @@ export class CreateWikiComponent implements OnInit {
     this.formCreationWiki = new FormGroup({
       titre: new FormControl('', [Validators.required]),
       categorie: new FormControl('', [Validators.required])
-    })
+    });
   }
 
   OnSubmit() {
     if (this.formCreationWiki.valid) {
       this.submitTest = true
       const wiki = this.getObjectFromForm();
-      if (wiki != null) {
-        this.wikiService.createWiki(wiki);
+      if (wiki != null && this.authService.isConnecte()) {
+        this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
+          wiki.createur = data;
+          this.wikiService.createWiki(wiki).subscribe((data) => {
+            this.router.navigate(['wiki/' + data.id])
+          });
+        });
       }
     }
   }
