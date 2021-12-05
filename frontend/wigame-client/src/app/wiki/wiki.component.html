@@ -3,6 +3,10 @@
 
     <h2>{{titre}}</h2>
 
+    <div>
+      <a routerLink="/accueil" routerLinkActive="active">Retour</a>
+    </div>
+
     <div *ngIf="isConnecte()">
       <p><a routerLink="/creer/fiche/{{wikiId}}" routerLinkActive="active">Ajouter une fiche</a></p>
     </div>

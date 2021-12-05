@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {FicheService} from "../services/fiche.service";
+import {AuthService} from "../core/guards/auth.service";
 
 @Component({
   selector: 'app-fiche',
@@ -19,11 +20,13 @@ export class FicheComponent implements OnInit {
   wikiId: string;
 
   constructor(private ficheservice : FicheService,
+              private authService: AuthService,
               private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.idFiche = this.route.snapshot.params['id'];
     this.loadFiche();
+
   }
 
   loadFiche() : void {
@@ -43,4 +46,10 @@ export class FicheComponent implements OnInit {
     return ((this.url == null) || (this.url.trim() === ""));
   }
 
+  isTheUser() {
+    if (this.authService.isConnecte()) {
+      return (this.redacteur == this.authService.getUserName());
+    };
+    return false;
+  }
 }

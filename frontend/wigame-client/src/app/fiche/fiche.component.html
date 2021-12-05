@@ -18,3 +18,6 @@
   </div>
 </div>
 
+<div *ngIf="isTheUser()">
+  <p><a routerLink="/update/fiche/{{idFiche}}" routerLinkActive="active">Modifier cette fiche</a></p>
+</div>
