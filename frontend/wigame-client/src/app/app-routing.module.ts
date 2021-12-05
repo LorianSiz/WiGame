@@ -8,6 +8,7 @@ import {InscriptionComponent} from "./inscription/inscription.component";
 import { CreateFicheComponent } from "./create-fiche/create-fiche.component";
 import { UpdateFicheComponent } from "./update-fiche/update-fiche.component";
 import {CreateWikiComponent} from "./create-wiki/create-wiki.component";
+//import {UpdateWikiComponent} from "./update-wiki/update-wiki.component";
 
 
 const routes: Routes = [

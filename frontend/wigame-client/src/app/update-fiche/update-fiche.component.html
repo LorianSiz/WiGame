@@ -1,6 +1,11 @@
 <div class="headerUpdateFiche">
   <h2>Modification de fiche</h2>
 </div>
+
+<div>
+  <a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">Retour</a>
+</div>
+
 <div class="panel panel-default">
   <form [formGroup]="formUpdateFiche" (ngSubmit)="OnSubmit()">
     <div>
