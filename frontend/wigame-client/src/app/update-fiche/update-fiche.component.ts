@@ -44,7 +44,9 @@ export class UpdateFicheComponent implements OnInit {
     if(this.formUpdateFiche.valid) {
       this.submitTest = true
       this.updateThisFiche();
-      this.ficheService.updateFiche(this.fiche)
+      this.ficheService.updateFiche(this.fiche).subscribe((data)=> {
+        this.router.navigate(['fiche/'+data.id]);
+      });
     } else {
       this.errorMessage = 'veuillez rensignez tout les champs';
     }
@@ -55,6 +57,7 @@ export class UpdateFicheComponent implements OnInit {
     this.fiche.contenu = this.formUpdateFiche.controls["contenu"].value;
     this.fiche.url = this.formUpdateFiche.controls["url"].value;
   }
+
   testTitre() {
     return ((!this.formUpdateFiche.controls["titre"].valid && this.formUpdateFiche.controls["titre"].touched) ||
       (this.submitTest && !this.formUpdateFiche.controls["titre"].valid));

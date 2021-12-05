@@ -1,6 +1,11 @@
 <div class="headerCreationFiche" xmlns="http://www.w3.org/1999/html">
   <h2>Creation de fiche</h2>
 </div>
+
+<div>
+  <a routerLink="/wiki/{{wikiId}}" routerLinkActive="active">Retour</a>
+</div>
+
 <div class="panel panel-default">
   <form [formGroup]="formCreationFiche" (ngSubmit)="OnSubmit()">
     <div>
