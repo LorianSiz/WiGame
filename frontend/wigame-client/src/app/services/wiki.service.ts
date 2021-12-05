@@ -13,7 +13,7 @@ export class WikiService {
 
 
   getWikiById(id: string): Observable<Wiki> {
-    return this.httpClient.get(`${this.baseUrl}/${id}`);
+    return this.httpClient.get(`${this.baseUrl}/recuperer/${id}`);
   }
 
   /*

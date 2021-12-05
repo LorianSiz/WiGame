@@ -8,12 +8,12 @@
     <changeSet id="insert utilisateurs" author="lsiz">
         <insert tableName="utilisateur">
             <column name="pseudo" value="Major"/>
-            <column name="mdp" value="123"/>
+            <column name="mdp" value="$2a$10$09u2DcdUu3T7yFak54tTzunVnMKxDMBNIcJxMbIKPTKmBuhE4oHke"/>
             <column name="mail" value="major@gmail.com"/>
         </insert>
         <insert tableName="utilisateur">
             <column name="pseudo" value="Abloum"/>
-            <column name="mdp" value="456"/>
+            <column name="mdp" value="$2a$10$QxfJ2k2iJCkQvbSFZrLLLugbabMZAeezJZ2bNbbAagB7AG8duBhFW"/>
             <column name="mail" value="abloum@gmail.com"/>
         </insert>
     </changeSet>

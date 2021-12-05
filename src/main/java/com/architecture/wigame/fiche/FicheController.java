@@ -13,7 +13,7 @@ public class FicheController {
 
     private final FicheService ficheService;
 
-    @GetMapping("{id}")
+    @GetMapping("recuperer/{id}")
     public FicheDTO getFicheById(@PathVariable("id") Long id) {
         System.out.println("Contro " + id);
         return ficheService.getFicheById(id); }
