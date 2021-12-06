@@ -56,10 +56,12 @@ export class GestionProfilComponent implements OnInit {
   }
 
   LoadFavoris() {
+    /*
     this.favoris.forEach(function (fav){
       this.Favoris.add(fav.fich_conserne);
       console.log(fav.id);
     });
+     */
   }
 
   OnSubmitModif() {

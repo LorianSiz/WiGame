@@ -12,7 +12,6 @@ export class FavorisService {
   constructor(private httpClient: HttpClient) {}
 
   findByUserId(id: string): Observable<Favoris[]> {
-    console.log(this.httpClient.get<Favoris[]>(`${this.baseUrl}/trouver/${id}`))
     return this.httpClient.get<Favoris[]>(`${this.baseUrl}/trouver/${id}`);
   }
 

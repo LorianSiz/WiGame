@@ -81,12 +81,12 @@ export class FicheComponent implements OnInit {
       return this.authService.isConnecte();
     }
 
-    /*
+
     TestFavExist() : boolean {
       const favoris = this.getFav();
-      return this.favorisservice.favorisExist(favoris);
+      return false;
+      // return this.favorisservice.favorIsExist(favoris);
     }
-    */
 
 
     OnSubmitFav() {

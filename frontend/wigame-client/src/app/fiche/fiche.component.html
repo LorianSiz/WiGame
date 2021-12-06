@@ -19,9 +19,16 @@
 </div>
 
 <div *ngIf="TestIsConnected()">
-  <form  (ngSubmit)="OnSubmitFav()">
-    <input type="submit" value="Ajouter aux favoris"/>
-  </form>
+  <div *ngIf="!TestFavExist()">
+    <form  (ngSubmit)="OnSubmitFav()">
+      <input type="submit" value="Ajouter aux favoris"/>
+    </form>
+  </div>
+  <div *ngIf="TestFavExist()">
+    <form  (ngSubmit)="OnSubmitSupprFav()">
+      <input type="submit" value="Ajouter aux favoris"/>
+    </form>
+  </div>
 </div>
 
 <div *ngIf="isTheUser()">

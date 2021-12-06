@@ -14,6 +14,8 @@ public interface FavorisRepository extends JpaRepository<Favoris, Long> {
     @Override
     List<Favoris> findAll();
 
+    @Query(value = "SELECT * FROM Favoris WHERE utilisateur_id = ?1", nativeQuery = true)
+    List<Favoris> findByUtil_conserne(Long id_util);
 
     @Override
     void delete(Favoris entity);
