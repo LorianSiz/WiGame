@@ -33,4 +33,9 @@ public class FavorisController {
     public List<FavorisDTO> findByUserId(@PathVariable("id") Long id) {
         return favorisService.findByUserId(id);
     }
+
+    @GetMapping("existe/{id_fich}/{id_util}")
+    public boolean existsFavorisByFichAndUtil(@PathVariable Long id_fiche, @PathVariable Long id_util) {
+        return favorisService.existsFavorisByFichAndUtil(id_fiche, id_util);
+    }
 }

@@ -20,4 +20,7 @@ public interface FavorisRepository extends JpaRepository<Favoris, Long> {
     @Override
     void delete(Favoris entity);
 
+    @Query(value = "SELECT COUNT(f)>0 FROM Favoris f WHERE fiche_id = ?1 AND utilisateur_id = ?2", nativeQuery = true)
+    boolean existsFavorisByFich_conserneAndUtil_conserne(Long id_fiche, Long id_util);
+
 }

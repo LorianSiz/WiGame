@@ -31,4 +31,8 @@ export class FavorisService {
   updateFavoris(favoris: Favoris): Observable<Favoris> {
     return this.httpClient.put(`${this.baseUrl}`, favoris);
   }
+
+  existFavoris(id_fiche : string, id_util : string) {
+    return this.httpClient.get(`${this.baseUrl}/existe/${id_fiche}/${id_util}`);
+  }
 }

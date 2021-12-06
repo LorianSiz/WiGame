@@ -69,4 +69,10 @@ public class FavorisService {
         }
         return listeFavorisDTO;
     }
+
+    public boolean existsFavorisByFichAndUtil(Long id_fiche, Long id_util) {
+        return repository.existsFavorisByFich_conserneAndUtil_conserne(id_fiche, id_util);
+    }
+
+
 }
