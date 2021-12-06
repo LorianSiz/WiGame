@@ -11,7 +11,7 @@
     <div>
       <h5> Page favorite : </h5>
       <ul>
-        <li *ngFor="let fav of favoris"><a routerLink="/fiche/{{fav.fich_conserne.id}}" routerLinkActive="active">{{fav.fich_conserne.titre}}</a></li>
+        <li *ngFor="let fav of favoris"><a routerLink="/fiche/{{fav.fich_conserne!.id!}}" routerLinkActive="active">{{fav.fich_conserne!.titre!}}</a></li>
       </ul>
     </div>
     <div>

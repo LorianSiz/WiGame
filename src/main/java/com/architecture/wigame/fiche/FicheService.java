@@ -1,5 +1,6 @@
 package com.architecture.wigame.fiche;
 
+import com.architecture.wigame.Decodex.DecodexService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +44,9 @@ public class FicheService {
             return FicheDTO;
             // throw new ResourceNotFoundException("fiche " + FicheDTO.getTitre() + " does not exist when trying to update");
         }
+    }
+
+    public int NoteDecodex(String url) {
+        return DecodexService.DecodexServices(url);
     }
 }
