@@ -27,8 +27,6 @@ export class GestionProfilComponent implements OnInit {
   invalidModification = false;
   favoris: Favoris[];
 
-  Favoris : Fiche[];
-
   constructor(private authService: AuthService,
               private utilisateurService : UtilisateurService,
               private favorisService : FavorisService,
@@ -43,7 +41,6 @@ export class GestionProfilComponent implements OnInit {
       this.utilisateur = data!;
       this.favorisService.findByUserId(this.utilisateur!.id!.toString()).subscribe((data1) => {
         this.favoris = data1;
-        this.LoadFavoris();
       });
     });
 
@@ -53,15 +50,6 @@ export class GestionProfilComponent implements OnInit {
       mail: new FormControl(''),
     });
 
-  }
-
-  LoadFavoris() {
-    /*
-    this.favoris.forEach(function (fav){
-      this.Favoris.add(fav.fich_conserne);
-      console.log(fav.id);
-    });
-     */
   }
 
   OnSubmitModif() {
