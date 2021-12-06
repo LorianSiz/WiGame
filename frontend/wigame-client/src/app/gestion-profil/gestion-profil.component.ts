@@ -6,6 +6,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Utilisateur} from "../models/utilisateur.interface";
 import {forkJoin} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {FavorisService} from "../services/favoris.service";
+import {Favoris} from "../models/favoris.interface";
 
 @Component({
   selector: 'app-gestion-profil',
@@ -22,17 +24,25 @@ export class GestionProfilComponent implements OnInit {
   submitTest = false;
   errorMessage: string;
   invalidModification = false;
+  favoris: Favoris[];
 
   Favoris : Fiche[];
 
   constructor(private authService: AuthService,
               private utilisateurService : UtilisateurService,
+              private favorisService : FavorisService,
               private route: ActivatedRoute) { }
 
   formModificationUtilisateur : FormGroup;
 
   ngOnInit(): void {
-    this.utilisateurService.getUtilisateurById("1").subscribe((data)=> {
+
+    this.favorisService.findByUserName(this.authService.getUserName()).subscribe((data) => {
+      this.favoris = data;
+    });
+    console.log(this.favoris); // test
+
+    this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
       this.utilisateur = data;
     });
 

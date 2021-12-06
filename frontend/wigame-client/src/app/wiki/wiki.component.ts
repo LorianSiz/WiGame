@@ -31,6 +31,7 @@ export class WikiComponent implements OnInit {
       this.categorie = data.categorie;
       this.createur = data.createur!.pseudo;
       this.listeFiche = data.listeFiche;
+      console.log(data);
     });
   }
 

@@ -9,6 +9,7 @@ import { CreateFicheComponent } from "./create-fiche/create-fiche.component";
 import { UpdateFicheComponent } from "./update-fiche/update-fiche.component";
 import {CreateWikiComponent} from "./create-wiki/create-wiki.component";
 //import {UpdateWikiComponent} from "./update-wiki/update-wiki.component";
+import {GestionProfilComponent} from "./gestion-profil/gestion-profil.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'creer/fiche/:wikiId', component: CreateFicheComponent },
   { path: 'update/fiche/:ficheId', component: UpdateFicheComponent },
   { path: 'creer/wiki', component: CreateWikiComponent },
+  { path: 'profil', component: GestionProfilComponent },
 ];
 
 @NgModule({

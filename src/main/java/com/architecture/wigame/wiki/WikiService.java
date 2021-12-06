@@ -20,6 +20,7 @@ public class WikiService {
     public WikiDTO getWikiById(Long id) {
         Optional<Wiki> wiki = repository.findById(id);
         if (wiki.isPresent()) {
+            System.out.println(id + "  " + mapper.toDTO(wiki.get()).getListeFiche().toString());
             return mapper.toDTO(wiki.get());
         } else {
             return new WikiDTO();

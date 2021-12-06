@@ -3,6 +3,8 @@ package com.architecture.wigame.favoris;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("favoris")
 @RequiredArgsConstructor
@@ -21,4 +23,14 @@ public class FavorisController {
 
     @PutMapping
     public FavorisDTO updateFavoris(@RequestBody FavorisDTO favorisDTO) { return favorisService.updateFavoris(favorisDTO); }
+
+    @RequestMapping(value="{favoris}", method=RequestMethod.DELETE)
+    public void deleteFavoris(@PathVariable("favoris") FavorisDTO favorisDTO) {
+        favorisService.deleteFavoris(favorisDTO);
+    }
+
+    @GetMapping("trouver/{name}")
+    public List<FavorisDTO> findByUserName(@PathVariable("name") String name) {
+        return favorisService.findByUserName(name);
+    }
 }

@@ -17,6 +17,9 @@
     <li class="nav-item" *ngIf="isConnecte()">
       <a class="nav-link" (click)=deconnecter()>Se déconnecter</a>
     </li>
+    <li class="nav-item" *ngIf="isConnecte()">
+      <a routerLink="profil" class="nav-link" routerLinkActive="active">Géré son profil</a>
+    </li>
   </ul>
 </nav>
 <div class="container">
