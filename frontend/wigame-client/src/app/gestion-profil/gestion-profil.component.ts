@@ -8,6 +8,7 @@ import {forkJoin} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {FavorisService} from "../services/favoris.service";
 import {Favoris} from "../models/favoris.interface";
+import {FicheService} from "../services/fiche.service";
 
 @Component({
   selector: 'app-gestion-profil',
@@ -31,6 +32,7 @@ export class GestionProfilComponent implements OnInit {
   constructor(private authService: AuthService,
               private utilisateurService : UtilisateurService,
               private favorisService : FavorisService,
+              private ficheService : FicheService,
               private route: ActivatedRoute) { }
 
   formModificationUtilisateur : FormGroup;
@@ -41,6 +43,7 @@ export class GestionProfilComponent implements OnInit {
       this.utilisateur = data!;
       this.favorisService.findByUserId(this.utilisateur!.id!.toString()).subscribe((data1) => {
         this.favoris = data1;
+        this.LoadFavoris();
       });
     });
 
@@ -50,6 +53,13 @@ export class GestionProfilComponent implements OnInit {
       mail: new FormControl(''),
     });
 
+  }
+
+  LoadFavoris() {
+    this.favoris.forEach(function (fav){
+      this.Favoris.add(fav.fich_conserne);
+      console.log(fav.id);
+    });
   }
 
   OnSubmitModif() {
