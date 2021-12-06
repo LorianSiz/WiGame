@@ -10,14 +10,9 @@ export class FavorisService {
   private baseUrl = 'api/favoris';
 
   constructor(private httpClient: HttpClient) {}
-  /*
-    getAllOrganizations(): Observable<Organization[]> {
-      return this.httpClient.get<Organization[]>(`${this.baseUrl}`);
-    }
-  */
 
-  findByUserName(userName: string): Observable<Favoris[]> {
-    return this.httpClient.get<Favoris[]>(`${this.baseUrl}/trouver/${userName}`);
+  findByUserId(userName: string): Observable<Favoris[]> {
+    return this.httpClient.get<Favoris[]>(`${this.baseUrl}/trouver/${id}`);
   }
 
   getFavorisById(id: string): Observable<Favoris> {

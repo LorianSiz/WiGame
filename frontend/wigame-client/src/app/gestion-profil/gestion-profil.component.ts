@@ -37,14 +37,14 @@ export class GestionProfilComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.favorisService.findByUserName(this.authService.getUserName()).subscribe((data) => {
-      this.favoris = data;
-    });
-    console.log(this.favoris); // test
-
     this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
       this.utilisateur = data;
     });
+
+    this.favorisService.findByUserId(this.utilisateur.id.toString()).subscribe((data) => {
+      this.favoris = data;
+    });
+    console.log(this.favoris);
 
     this.formModificationUtilisateur = new FormGroup({
       pseudo: new FormControl('', [Validators.required]),

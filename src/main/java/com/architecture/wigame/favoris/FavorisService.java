@@ -1,5 +1,10 @@
 package com.architecture.wigame.favoris;
 
+import com.architecture.wigame.utilisateur.Utilisateur;
+import com.architecture.wigame.utilisateur.UtilisateurRepository;
+import com.architecture.wigame.utilisateur.UtilisateurService;
+import com.architecture.wigame.wiki.Wiki;
+import com.architecture.wigame.wiki.WikiDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +18,7 @@ import java.util.Optional;
 public class FavorisService {
 
     private final FavorisRepository repository;
+    private final UtilisateurRepository userRepository;
     private final FavorisMapper mapper;
 
 
@@ -54,17 +60,24 @@ public class FavorisService {
         }
     }
 
-    public List<FavorisDTO> findByUserName(String name) {
-        List<Favoris> listFav = repository.findAll();
+    public List<FavorisDTO> findByUserId(Long id) {
+        /*List<Favoris> listFav = repository.findAll();
         List<FavorisDTO> listRes = null;
 
         for (Favoris fav:
-             listFav) {
+                listFav) {
             if (fav.getUtil_conserne().getPseudo().equals(name)) {
                 listRes.add(mapper.toDTO(fav)); // creer une erreur
             }
         }
 
-        return listRes;
+        return listRes;*/
+
+        List<Favoris> listeFavoris = repository.findByUtil_conserne(id);
+        List<FavorisDTO> listeFavorisDTO = new ArrayList<>();
+        for (Favoris favoris : listeFavoris) {
+            listeFavorisDTO.add(mapper.toDTO(favoris));
+        }
+        return listeFavorisDTO;
     }
 }

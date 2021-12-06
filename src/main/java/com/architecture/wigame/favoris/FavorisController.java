@@ -30,8 +30,8 @@ public class FavorisController {
         favorisService.deleteFavoris(favorisDTO);
     }
 
-    @GetMapping("trouver/{name}")
-    public List<FavorisDTO> findByUserName(@PathVariable("name") String name) {
-        return favorisService.findByUserName(name);
+    @GetMapping("trouver/{id}")
+    public List<FavorisDTO> findByUserId(@PathVariable("id") Long id) {
+        return favorisService.findByUserId(id);
     }
 }
