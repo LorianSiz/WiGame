@@ -61,17 +61,6 @@ public class FavorisService {
     }
 
     public List<FavorisDTO> findByUserId(Long id) {
-        /*List<Favoris> listFav = repository.findAll();
-        List<FavorisDTO> listRes = null;
-
-        for (Favoris fav:
-                listFav) {
-            if (fav.getUtil_conserne().getPseudo().equals(name)) {
-                listRes.add(mapper.toDTO(fav)); // creer une erreur
-            }
-        }
-
-        return listRes;*/
         System.out.println(id);
         List<Favoris> listeFavoris = repository.findByUtil_conserne(id);
         List<FavorisDTO> listeFavorisDTO = new ArrayList<>();
