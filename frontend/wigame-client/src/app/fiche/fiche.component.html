@@ -18,9 +18,11 @@
   </div>
 </div>
 
-<form  (ngSubmit)="OnSubmitFav()">
-  <input type="submit" value="Ajouter aux favoris"/>
-</form>
+<div *ngIf="TestIsConnected()">
+  <form  (ngSubmit)="OnSubmitFav()">
+    <input type="submit" value="Ajouter aux favoris"/>
+  </form>
+</div>
 
 <div *ngIf="isTheUser()">
   <p><a routerLink="/update/fiche/{{idFiche}}" routerLinkActive="active">Modifier cette fiche</a></p>

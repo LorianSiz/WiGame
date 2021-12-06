@@ -38,20 +38,20 @@ export class GestionProfilComponent implements OnInit {
   ngOnInit(): void {
 
     this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
-      this.utilisateur = data;
+      this.utilisateur = data!;
+      this.favorisService.findByUserId(this.utilisateur!.id!.toString()).subscribe((data1) => {
+        this.favoris = data1;
+      });
     });
-
-    this.favorisService.findByUserId(this.utilisateur.id.toString()).subscribe((data) => {
-      this.favoris = data;
-    });
-    console.log(this.favoris);
 
     this.formModificationUtilisateur = new FormGroup({
       pseudo: new FormControl('', [Validators.required]),
       mdp: new FormControl('', [Validators.required]),
       mail: new FormControl(''),
     });
+
   }
+
   OnSubmitModif() {
     if(this.formModificationUtilisateur.valid) {
       this.submitTest = false;

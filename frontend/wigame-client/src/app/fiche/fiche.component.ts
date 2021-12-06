@@ -77,12 +77,25 @@ export class FicheComponent implements OnInit {
       }
     }
 
-    FavExist() {
-
+    TestIsConnected() : boolean {
+      return this.authService.isConnecte();
     }
+
+    /*
+    TestFavExist() : boolean {
+      const favoris = this.getFav();
+      return this.favorisservice.favorisExist(favoris);
+    }
+    */
+
 
     OnSubmitFav() {
       const favoris = this.getFav();
       this.favorisservice.createFavoris(favoris).subscribe();
+    }
+
+    OnSubmitSupprFav() {
+      const favoris = this.getFav();
+      this.favorisservice.deleteFavoris(favoris);
     }
   }

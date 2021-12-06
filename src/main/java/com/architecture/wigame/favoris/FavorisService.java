@@ -72,7 +72,7 @@ public class FavorisService {
         }
 
         return listRes;*/
-
+        System.out.println(id);
         List<Favoris> listeFavoris = repository.findByUtil_conserne(id);
         List<FavorisDTO> listeFavorisDTO = new ArrayList<>();
         for (Favoris favoris : listeFavoris) {
