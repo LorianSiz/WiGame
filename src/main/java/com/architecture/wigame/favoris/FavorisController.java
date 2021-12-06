@@ -18,6 +18,7 @@ public class FavorisController {
 
     @PostMapping
     public FavorisDTO createFavoris(@RequestBody FavorisDTO favorisDTO){
+        System.out.println("ici");
         return favorisService.createFavoris(favorisDTO);
     }
 

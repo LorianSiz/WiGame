@@ -25,6 +25,7 @@ export class FavorisService {
   }
 
   createFavoris(favoris: Favoris): Observable<Favoris> {
+    console.log(this.baseUrl);
     return this.httpClient.post(`${this.baseUrl}`, favoris);
   }
 

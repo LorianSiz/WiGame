@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {FicheService} from "../services/fiche.service";
 import {AuthService} from "../core/guards/auth.service";
+import {Favoris} from "../models/favoris.interface";
+import {Observable} from "rxjs";
+import {FavorisService} from "../services/favoris.service";
+import {UtilisateurService} from "../services/utilisateur.service";
+import {Utilisateur} from "../models/utilisateur.interface";
+import {Fiche} from "../models/fiche.interface";
 
 @Component({
   selector: 'app-fiche',
@@ -19,7 +25,12 @@ export class FicheComponent implements OnInit {
   idFiche: string;
   wikiId: string;
 
+  utilisateur: Utilisateur;
+  fiche: Fiche;
+
   constructor(private ficheservice : FicheService,
+              private favorisservice : FavorisService,
+              private utilisateurService : UtilisateurService,
               private authService: AuthService,
               private route: ActivatedRoute) {}
 
@@ -27,6 +38,12 @@ export class FicheComponent implements OnInit {
     this.idFiche = this.route.snapshot.params['id'];
     this.loadFiche();
 
+    this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
+      this.utilisateur = data;
+      this.ficheservice.getFicheById(this.idFiche).subscribe((data1)=> {
+        this.fiche = data1;
+      });
+    });
   }
 
   loadFiche() : void {
@@ -52,4 +69,20 @@ export class FicheComponent implements OnInit {
     };
     return false;
   }
-}
+
+  getFav() : Favoris {
+    return {
+      util_conserne : this.utilisateur,
+      fich_conserne : this.fiche,
+      }
+    }
+
+    FavExist() {
+
+    }
+
+    OnSubmitFav() {
+      const favoris = this.getFav();
+      this.favorisservice.createFavoris(favoris).subscribe();
+    }
+  }
