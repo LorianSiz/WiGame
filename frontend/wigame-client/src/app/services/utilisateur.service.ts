@@ -24,7 +24,7 @@ export class UtilisateurService {
   }
 
   updateUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.put(`${this.baseUrl}/updateUtilisateur`, utilisateur);
+    return this.http.put(`${this.baseUrl}/modifier`, utilisateur);
   }
 
   connexion(pseudo: string, mdp: string): Observable<Utilisateur> {

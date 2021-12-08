@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../core/guards/auth.service";
-import {Fiche} from "../models/fiche.interface";
 import {UtilisateurService} from "../services/utilisateur.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Utilisateur} from "../models/utilisateur.interface";
@@ -17,10 +16,8 @@ import {FicheService} from "../services/fiche.service";
 })
 export class GestionProfilComponent implements OnInit {
   utilisateur : Utilisateur;
-
-  pseudo : string;
-  mdp : string;
-  mail : string;
+  pseudo: string;
+  mail:string;
   submitModif = false;
   submitTest = false;
   errorMessage: string;
@@ -38,16 +35,23 @@ export class GestionProfilComponent implements OnInit {
   ngOnInit(): void {
 
     this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
+      this.formModificationUtilisateur = new FormGroup({
+        pseudo: new FormControl('', [Validators.required]),
+        mail: new FormControl('', [Validators.required,
+          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+        mdp: new FormControl('', [Validators.required]),
+        confirmation: new FormControl('', [Validators.required])
+      });
       this.utilisateur = data!;
+      this.pseudo = data.pseudo!;
+      this.mail = data.mail!;
+      this.formModificationUtilisateur.patchValue({
+        pseudo: this.utilisateur.pseudo,
+        mail: this.utilisateur.mail,
+      });
       this.favorisService.findByUserId(this.utilisateur!.id!.toString()).subscribe((data1) => {
         this.favoris = data1;
       });
-    });
-
-    this.formModificationUtilisateur = new FormGroup({
-      pseudo: new FormControl('', [Validators.required]),
-      mdp: new FormControl('', [Validators.required]),
-      mail: new FormControl(''),
     });
 
   }
@@ -63,7 +67,7 @@ export class GestionProfilComponent implements OnInit {
     if(this.formModificationUtilisateur.valid) {
       this.submitTest = false;
       this.utilisateurService.isExistsByPseudo(this.formModificationUtilisateur.value.pseudo).subscribe((result) => {
-          if(result) {
+          if(result && this.formModificationUtilisateur.value.pseudo != this.utilisateur.pseudo) {
             this.invalidModification = true;
             this.errorMessage = 'Pseudo déjà utilisé';
           } else {
@@ -72,7 +76,7 @@ export class GestionProfilComponent implements OnInit {
               this.utilisateurService.updateUtilisateur(utilisateur).subscribe((result) => {
                   if (!result) {
                     this.invalidModification = true;
-                    this.errorMessage = 'Utilisateur déjà existant';
+                    this.errorMessage = 'Problème de mise à jour utilisateur';
                   } else {
                     forkJoin(
                       this.utilisateurService.tokenSecurity(this.formModificationUtilisateur.controls["pseudo"].value, this.formModificationUtilisateur.controls["mdp"].value),
@@ -102,7 +106,7 @@ export class GestionProfilComponent implements OnInit {
                 },
                 () => {
                   this.invalidModification = true;
-                  this.errorMessage = 'Erreur de modification';
+                  this.errorMessage = 'Erreur de modification serveur';
                 });
             } else {
               this.invalidModification = true;
@@ -128,11 +132,16 @@ export class GestionProfilComponent implements OnInit {
   }
 
   getObjectFromForm(): Utilisateur {
-    return {
-      pseudo: this.formModificationUtilisateur.value.pseudo,
-      mail: this.formModificationUtilisateur.value.mail,
-      mdp: this.formModificationUtilisateur.value.mdp
-    };
+    if (this.formModificationUtilisateur.value.mdp === this.formModificationUtilisateur.value.confirmation) {
+      return {
+        pseudo: this.formModificationUtilisateur.value.pseudo,
+        mail: this.formModificationUtilisateur.value.mail,
+        mdp: this.formModificationUtilisateur.value.mdp
+      };
+    } else {
+      // @ts-ignore
+      return null;
+    }
   }
 
   testAffichageFormModif() {
@@ -154,5 +163,10 @@ export class GestionProfilComponent implements OnInit {
       (this.submitTest && !this.formModificationUtilisateur.controls["mdp"].valid));
   }
 
+  testConfirmation() {
+    return ((this.submitTest && !this.formModificationUtilisateur.controls["confirmation"].valid) ||
+      ((this.formModificationUtilisateur.controls["mdp"].value !== this.formModificationUtilisateur.controls["confirmation"].value) &&
+        this.formModificationUtilisateur.controls["confirmation"].touched));
+  }
 
 }

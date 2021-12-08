@@ -5,8 +5,8 @@
   </div>
   <div class="panel panel-default">
     <div>
-      <h4> Pseudo : {{utilisateur.pseudo}} </h4>
-      <h4> mail : {{utilisateur.mail}} </h4>
+      <h4> Pseudo : {{pseudo}} </h4>
+      <h4> mail : {{mail}} </h4>
     </div>
     <div>
       <h5> Page favorite : </h5>
@@ -26,24 +26,31 @@
       <form [formGroup]="formModificationUtilisateur" (ngSubmit)="OnSubmitModif()">
         <div>
           <div>
-            <input type="text" aria-describedby="Nouveau pseudo : " value={{utilisateur.pseudo}} formControlName="pseudo">
+            <input type="text" aria-describedby="Nouveau pseudo : " placeholder="Pseudo" formControlName="pseudo">
             <div class="pb" *ngIf="testPseudo()">
               Pseudo nécéssaire
             </div>
           </div>
           <div>
-            <input type="text" aria-describedby="Nouveau mdp : " formControlName="mdp">
+            <input type="text" aria-describedby="Nouveau mail : " placeholder="Mail" formControlName="mail">
+            <div class="pb" *ngIf="testMail()">
+              Mail nécéssaire
+            </div>
+          </div>
+          <div>
+            <input type="password" aria-describedby="Nouveau mdp : " placeholder="Mot de passe" formControlName="mdp">
             <div class="pb" *ngIf="testMdp()">
               Mot de passe nécéssaire
             </div>
           </div>
           <div>
-          <input type="text" aria-describedby="Nouveau mail : " formControlName="mail">
-          <div class="pb" *ngIf="testMail()">
-            Mail nécéssaire
+            <input type="password" class="form-control d-inline p-2" aria-describedby="Confirmer le mot de passe" placeholder="Confirmer mot de passe" id="confirmation" formControlName="confirmation">
+            <div class="text-danger" *ngIf="testConfirmation()">
+              Le mot de passe ne correspond pas
+            </div>
           </div>
-        </div>
         <br>
+          <div class="alert alert-warning" *ngIf='invalidModification'>{{errorMessage}}</div>
         <input type="submit" value="Appliquer les modification"/>
         </div>
       </form>

@@ -1,4 +1,4 @@
-package com.architecture.wigame.Decodex;
+package com.architecture.wigame.decodex;
 
 public class DecodexService {
 

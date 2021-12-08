@@ -25,6 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/wiki/recuperer/**").permitAll()
                 .antMatchers("/fiche/recuperer/**").permitAll()
                 .antMatchers("/utilisateur/recuperer/**").permitAll()
+                .antMatchers("/utilisateur/updateUtilisateur/**").authenticated()
                 .anyRequest().authenticated();
     }
 
