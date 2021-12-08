@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Fiche} from "../models/fiche.interface";
-import {AuthService} from "../core/guards/auth.service";
-import {WikiService} from "../services/wiki.service";
+import {Fiche} from "../../core/models/fiche.interface";
+import {AuthService} from "../../core/guards/auth.service";
+import {WikiService} from "../../core/services/wiki.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Wiki} from "../models/wiki.interface";
+import {Wiki} from "../../core/models/wiki.interface";
 import {Router} from "@angular/router";
-import {UtilisateurService} from "../services/utilisateur.service";
+import {UtilisateurService} from "../../core/services/utilisateur.service";
 
 @Component({
   selector: 'app-create-wiki',

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,7 @@ public class FicheService {
 
     public FicheDTO createFiche(FicheDTO FicheDTO) {
         Fiche fiche = mapper.toEntity(FicheDTO);
+        fiche.setCategorie(fiche.getCategorie().toUpperCase(Locale.ROOT));
         fiche.setFiabilite(NoteDecodex(fiche.getUrl()));
         Fiche savedFiche = repository.save(fiche);
         return mapper.toDTO(savedFiche);
@@ -37,6 +39,7 @@ public class FicheService {
         Optional<Fiche> ficheOpt = repository.findById(FicheDTO.getId());
         if(ficheOpt.isPresent()){
             Fiche fiche = mapper.toEntity(FicheDTO);
+            fiche.setCategorie(fiche.getCategorie().toUpperCase(Locale.ROOT));
             fiche.setFiabilite(NoteDecodex(fiche.getUrl())); //WIP
             return mapper.toDTO(repository.save(fiche));
         } else {

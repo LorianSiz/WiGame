@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../core/guards/auth.service";
-import {UtilisateurService} from "../services/utilisateur.service";
+import {AuthService} from "../../core/guards/auth.service";
+import {UtilisateurService} from "../../core/services/utilisateur.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Utilisateur} from "../models/utilisateur.interface";
+import {Utilisateur} from "../../core/models/utilisateur.interface";
 import {forkJoin} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {FavorisService} from "../services/favoris.service";
-import {Favoris} from "../models/favoris.interface";
-import {FicheService} from "../services/fiche.service";
+import {FavorisService} from "../../core/services/favoris.service";
+import {Favoris} from "../../core/models/favoris.interface";
+import {FicheService} from "../../core/services/fiche.service";
 
 @Component({
   selector: 'app-gestion-profil',

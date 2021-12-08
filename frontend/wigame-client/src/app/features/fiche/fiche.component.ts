@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {FicheService} from "../services/fiche.service";
-import {AuthService} from "../core/guards/auth.service";
-import {Favoris} from "../models/favoris.interface";
+import {FicheService} from "../../core/services/fiche.service";
+import {AuthService} from "../../core/guards/auth.service";
+import {Favoris} from "../../core/models/favoris.interface";
 import {Observable} from "rxjs";
-import {FavorisService} from "../services/favoris.service";
-import {UtilisateurService} from "../services/utilisateur.service";
-import {Utilisateur} from "../models/utilisateur.interface";
-import {Fiche} from "../models/fiche.interface";
+import {FavorisService} from "../../core/services/favoris.service";
+import {UtilisateurService} from "../../core/services/utilisateur.service";
+import {Utilisateur} from "../../core/models/utilisateur.interface";
+import {Fiche} from "../../core/models/fiche.interface";
 import {waitForAsync} from "@angular/core/testing";
 
 @Component({

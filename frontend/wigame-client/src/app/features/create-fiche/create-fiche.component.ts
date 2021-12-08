@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import {FicheService} from "../services/fiche.service";
-import {AuthService} from "../core/guards/auth.service";
+import {FicheService} from "../../core/services/fiche.service";
+import {AuthService} from "../../core/guards/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Fiche} from "../models/fiche.interface";
+import {Fiche} from "../../core/models/fiche.interface";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UtilisateurService} from "../services/utilisateur.service";
+import {UtilisateurService} from "../../core/services/utilisateur.service";
 
 @Component({
   selector: 'app-create-fiche',

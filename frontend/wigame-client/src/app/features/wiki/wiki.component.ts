@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WikiService } from "../services/wiki.service";
-import {Fiche} from "../models/fiche.interface";
+import { WikiService } from "../../core/services/wiki.service";
+import {Fiche} from "../../core/models/fiche.interface";
 import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "../core/guards/auth.service";
+import {AuthService} from "../../core/guards/auth.service";
 
 @Component({
   selector: 'app-wiki',

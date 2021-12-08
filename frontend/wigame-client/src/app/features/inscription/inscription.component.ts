@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { UtilisateurService } from "../services/utilisateur.service";
-import { Utilisateur } from "../models/utilisateur.interface";
-import {AuthService} from "../core/guards/auth.service";
+import { UtilisateurService } from "../../core/services/utilisateur.service";
+import { Utilisateur } from "../../core/models/utilisateur.interface";
+import {AuthService} from "../../core/guards/auth.service";
 import { forkJoin } from "rxjs";
 
 @Component({

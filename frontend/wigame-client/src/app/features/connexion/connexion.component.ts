@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthService } from '../core/guards/auth.service';
+import { AuthService } from '../../core/guards/auth.service';
 import { forkJoin } from "rxjs";
-import { UtilisateurService } from "../services/utilisateur.service";
+import { UtilisateurService } from "../../core/services/utilisateur.service";
 
 @Component({
   selector: 'app-connexion',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Wiki} from "../models/wiki.interface";
-import {WikiService} from "../services/wiki.service";
+import {Wiki} from "../../core/models/wiki.interface";
+import {WikiService} from "../../core/services/wiki.service";
 
 @Component({
   selector: 'app-accueil',

@@ -5,19 +5,19 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { WikiComponent } from './wiki/wiki.component';
-import { FicheComponent } from './fiche/fiche.component';
+import { WikiComponent } from './features/wiki/wiki.component';
+import { FicheComponent } from './features/fiche/fiche.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { ConnexionComponent } from './features/connexion/connexion.component';
 import { AuthService } from './core/guards/auth.service';
 import { AccessGuard } from './core/guards/access-guard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
-import { AccueilComponent } from './accueil/accueil.component';
-import { CreateFicheComponent } from './create-fiche/create-fiche.component';
-import { UpdateFicheComponent } from './update-fiche/update-fiche.component';
-import {InscriptionComponent} from "./inscription/inscription.component";
-import { CreateWikiComponent } from './create-wiki/create-wiki.component';
-import { GestionProfilComponent } from './gestion-profil/gestion-profil.component';
+import { AccueilComponent } from './features/accueil/accueil.component';
+import { CreateFicheComponent } from './features/create-fiche/create-fiche.component';
+import { UpdateFicheComponent } from './features/update-fiche/update-fiche.component';
+import {InscriptionComponent} from "./features/inscription/inscription.component";
+import { CreateWikiComponent } from './features/create-wiki/create-wiki.component';
+import { GestionProfilComponent } from './features/gestion-profil/gestion-profil.component';
 
 @NgModule({
   declarations: [

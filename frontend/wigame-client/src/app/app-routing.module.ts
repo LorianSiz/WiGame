@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
-import {AccueilComponent} from "./accueil/accueil.component";
-import {ConnexionComponent} from "./connexion/connexion.component";
-import {WikiComponent} from "./wiki/wiki.component";
-import {FicheComponent} from "./fiche/fiche.component";
+import {AccueilComponent} from "./features/accueil/accueil.component";
+import {ConnexionComponent} from "./features/connexion/connexion.component";
+import {WikiComponent} from "./features/wiki/wiki.component";
+import {FicheComponent} from "./features/fiche/fiche.component";
 import {RouterModule, Routes} from "@angular/router";
-import {InscriptionComponent} from "./inscription/inscription.component";
-import { CreateFicheComponent } from "./create-fiche/create-fiche.component";
-import { UpdateFicheComponent } from "./update-fiche/update-fiche.component";
-import {CreateWikiComponent} from "./create-wiki/create-wiki.component";
-//import {UpdateWikiComponent} from "./update-wiki/update-wiki.component";
-import {GestionProfilComponent} from "./gestion-profil/gestion-profil.component";
+import {InscriptionComponent} from "./features/inscription/inscription.component";
+import { CreateFicheComponent } from "./features/create-fiche/create-fiche.component";
+import { UpdateFicheComponent } from "./features/update-fiche/update-fiche.component";
+import {CreateWikiComponent} from "./features/create-wiki/create-wiki.component";
+import {GestionProfilComponent} from "./features/gestion-profil/gestion-profil.component";
 
 
 const routes: Routes = [
