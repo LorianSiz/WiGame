@@ -1,9 +1,9 @@
-package com.architecture.wigame.Decodex;
+package com.architecture.wigame.decodex;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class decodexEntity {
+public class DecodexEntity {
     private int ID;
     private int ID_sitesName;
     private int insertTime;
