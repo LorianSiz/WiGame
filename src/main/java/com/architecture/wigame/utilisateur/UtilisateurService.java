@@ -57,6 +57,7 @@ public class UtilisateurService {
         Optional<Utilisateur> utilisateurOpt = repository.findById(UtilisateurDTO.getId());
         if(utilisateurOpt.isPresent()){
             Utilisateur utilisateur = mapper.toEntity(UtilisateurDTO);
+            utilisateur.setMdp(passwordEncoder.encode(utilisateur.getMdp()));
             return mapper.toDTO(repository.save(utilisateur));
         } else {
             return new UtilisateurDTO();

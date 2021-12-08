@@ -1,43 +1,35 @@
 package com.architecture.wigame.decodex;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class DecodexTemplate {
 
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate = new RestTemplate();
 
-    private RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
+    public int CallDecodex (String url) {
+        String urlDecodex = "https://api.decodexwatcher.communiquons.org/site/"+ url +"/infos";
 
-        public int CallDecodex (String url) {
-
-            String urlDecodex = "https://api.decodexwatcher.communiquons.org/site/"+ url +"/infos";
-            DecodexEntity decodex = new DecodexEntity();
-
-            //Faire une demande à envoyer à l'API
-            RequestEntity<DecodexEntity> request = null;
-            try {
-                request = RequestEntity
-                        .post(new URI(urlDecodex))
-                        .accept(MediaType.APPLICATION_JSON)
-                        .body(decodex);
-                //La réponse est renvoyée par l'API
-                ResponseEntity<DecodexEntity> response = restTemplate
-                        .exchange(request, DecodexEntity.class);
-                return decodex.getTrustLevel();
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
+        //Faire une demande à envoyer à l'API
+        try {
+            ResponseEntity<DecodexEntity> request = this.restTemplate.getForEntity(urlDecodex, DecodexEntity.class);
+            if (request.getStatusCode() == HttpStatus.OK) {
+                return request.getBody().getTrustLevel();
+            } else {
+                return -1;
             }
+        }
+        catch (final HttpClientErrorException e) {
             return -1;
         }
     }
+}

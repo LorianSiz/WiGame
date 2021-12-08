@@ -33,7 +33,6 @@ export class GestionProfilComponent implements OnInit {
   formModificationUtilisateur : FormGroup;
 
   ngOnInit(): void {
-
     this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
       this.formModificationUtilisateur = new FormGroup({
         pseudo: new FormControl('', [Validators.required]),
@@ -96,7 +95,7 @@ export class GestionProfilComponent implements OnInit {
                         if (redirectURL != null) {
                           window.location.href = redirectURL;
                         } else {
-                          window.location.href = '/accueil';
+                          window.location.href = '/profil';
                         }
                       },
                       () => {
@@ -134,6 +133,7 @@ export class GestionProfilComponent implements OnInit {
   getObjectFromForm(): Utilisateur {
     if (this.formModificationUtilisateur.value.mdp === this.formModificationUtilisateur.value.confirmation) {
       return {
+        id: this.utilisateur.id,
         pseudo: this.formModificationUtilisateur.value.pseudo,
         mail: this.formModificationUtilisateur.value.mail,
         mdp: this.formModificationUtilisateur.value.mdp

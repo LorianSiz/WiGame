@@ -68,7 +68,7 @@
                 <constraints nullable="false" foreignKeyName="fk_fiche_wiki" referencedTableName="wiki"
                              referencedColumnNames="wiki_id"/>
             </column>
-            <column name="url" type="VARCHAR(255)">
+            <column name="url" type="VARCHAR(255)" defaultValue="">
                 <constraints nullable="true" />
             </column>
         </createTable>

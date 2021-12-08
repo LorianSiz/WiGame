@@ -3,7 +3,7 @@ import {AuthService} from "../core/guards/auth.service";
 import {FicheService} from "../services/fiche.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Fiche} from "../models/fiche.interface";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-fiche',
@@ -17,38 +17,54 @@ export class UpdateFicheComponent implements OnInit {
   titre: string;
   contenu: string;
   url: string;
-
+  ficheId: string;
+  invalidModif = false;
   errorMessage: string;
 
   constructor(private authService: AuthService,
               private ficheService : FicheService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   formUpdateFiche : FormGroup;
 
   ngOnInit(): void {
     if(!this.authService.isConnecte()) {
       this.router.navigate(['connexion']);
+    } else {
+      this.ficheId = this.route.snapshot.params['ficheId'];
+      this.ficheService.getFicheById(this.ficheId).subscribe((data)=> {
+        this.formUpdateFiche = new FormGroup({
+          titre: new FormControl('', [Validators.required]),
+          contenu: new FormControl('', [Validators.required]),
+          url: new FormControl(''),
+        });
+        this.fiche = data;
+        this.formUpdateFiche.patchValue({
+          titre: this.fiche.titre,
+          contenu: this.fiche.contenu,
+          url: this.fiche.url,
+        });
+      });
     }
-    this.ficheService.getFicheById("1").subscribe((data)=> {
-      this.fiche = data;
-    });
-    this.formUpdateFiche = new FormGroup({
-      titre: new FormControl('', [Validators.required]),
-      contenu: new FormControl('', [Validators.required]),
-      url: new FormControl(''),
-    });
   }
 
   OnSubmit() {
     if(this.formUpdateFiche.valid) {
       this.submitTest = true
+      this.invalidModif = false;
       this.updateThisFiche();
       this.ficheService.updateFiche(this.fiche).subscribe((data)=> {
+        this.invalidModif = true;
         this.router.navigate(['fiche/'+data.id]);
-      });
+      },
+        () => {
+          this.invalidModif = true;
+          this.errorMessage = 'Erreur serveur';
+        });
     } else {
-      this.errorMessage = 'veuillez rensignez tout les champs';
+      this.invalidModif = true;
+      this.errorMessage = 'Veuillez rensignez tout les champs';
     }
   }
 

@@ -46,7 +46,8 @@ export class FicheComponent implements OnInit {
       this.utilisateur = data;
       this.ficheservice.getFicheById(this.idFiche).subscribe((data1)=> {
         this.fiche = data1;
-        this.SetFav();
+        if(this.authService.isConnecte())
+          this.SetFav();
       });
     });
   }
@@ -66,6 +67,10 @@ export class FicheComponent implements OnInit {
 
   isUrlNull() : boolean {
     return ((this.url == null) || (this.url.trim() === ""));
+  }
+
+  isFiabiliteNull() : boolean {
+    return ((this.fiabilite == null) || (this.fiabilite === -1));
   }
 
   isTheUser() {

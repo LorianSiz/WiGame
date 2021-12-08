@@ -1,9 +1,8 @@
 package com.architecture.wigame.decodex;
 
-import org.springframework.stereotype.Component;
+import java.io.Serializable;
 
-@Component
-public class DecodexEntity {
+public class DecodexEntity  implements Serializable {
     private int ID;
     private int ID_sitesName;
     private int insertTime;

@@ -2,6 +2,10 @@
   <div class="header">
 
     <h2>{{titre}}</h2>
+    <p>Créer par : {{createur}}</p>
+    <!--<br/>
+    <p>Catégorie : {{categorie}}</p>
+    <br/>-->
 
     <div>
       <a routerLink="/accueil" routerLinkActive="active">Retour</a>
@@ -11,12 +15,30 @@
       <p><a routerLink="/creer/fiche/{{wikiId}}" routerLinkActive="active">Ajouter une fiche</a></p>
     </div>
 
-    <br/>
-    <br/>
-    <p>Créer par : {{createur}}</p>
-    <br/>
-    <p>Catégorie : {{categorie}}</p>
-    <br/>
+    <nav>
+      <ul>
+        <li>
+          <form  (ngSubmit)="OnSubmitDescription()">
+            <input type="submit" value="Description"/>
+          </form>
+        </li>
+        <li>
+          <form  (ngSubmit)="OnSubmitFiches()">
+            <input type="submit" value="Fiches"/>
+          </form>
+        </li>
+        <li>
+          <form  (ngSubmit)="OnSubmitActualites()">
+            <input type="submit" value="Actualités"/>
+          </form>
+        </li>
+        <li>
+          <form  (ngSubmit)="OnSubmitGuides()">
+            <input type="submit" value="Guides"/>
+          </form>
+        </li>
+      </ul>
+    </nav>
 
   </div>
 
@@ -24,9 +46,29 @@
 
   <div class="body">
 
-    <ul>
-      <li *ngFor="let fiche of listeFiche"><a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">{{fiche.titre}}</a></li>
-    </ul>
+    <div>
+      <ul  *ngIf="testDescription()">
+        <li *ngFor="let fiche of listeFicheDescription"><a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">{{fiche.titre}}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <ul *ngIf="testFiches()">
+        <li *ngFor="let fiche of listeFicheFiche"><a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">{{fiche.titre}}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <ul  *ngIf="testActualites()">
+        <li *ngFor="let fiche of listeFicheActualite"><a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">{{fiche.titre}}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <ul  *ngIf="testGuides()">
+        <li *ngFor="let fiche of listeFicheGuide"><a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">{{fiche.titre}}</a></li>
+      </ul>
+    </div>
 
   </div>
 

@@ -3,27 +3,28 @@
 </div>
 
 <div>
-  <a routerLink="/fiche/{{fiche.id}}" routerLinkActive="active">Retour</a>
+  <a routerLink="/fiche/{{ficheId}}" routerLinkActive="active">Retour</a>
 </div>
 
 <div class="panel panel-default">
-  <form [formGroup]="formUpdateFiche" (ngSubmit)="OnSubmit()">
+    <form *ngIf="fiche" [formGroup]="formUpdateFiche" (ngSubmit)="OnSubmit()">
     <div>
       <div>
-        <input type="text" aria-describedby="Titre : " formControlName="titre" value="{{fiche.titre}}">
+        <input type="text" aria-describedby="Titre : " placeholder="Titre" formControlName="titre">*
         <div class="pb" *ngIf="testTitre()">
           Titre Nécéssaire
         </div>
       </div>
       <div>
-        <input type="text" style="width: 95%; height:100px" aria-describedby="Contenu : " value="{{fiche.contenu}}" formControlName="contenu">
+        <input type="text" style="width: 95%; height:100px" aria-describedby="Contenu : " placeholder="Contenu" formControlName="contenu">*
         <div class="pb" *ngIf="testContenu()">
           Contenu Nécéssaire
         </div>
       </div>
-      <input type="text" aria-describedby="URL source (non obligatoire) : " value="{{fiche.url}}" formControlName="url">
+      <input type="text" aria-describedby="URL source (non obligatoire) : " placeholder="URL source" formControlName="url">
     </div>
     <br>
+    <div class="alert alert-warning" *ngIf='invalidModif'>{{errorMessage}}</div>
     <input type="submit" value="Modifier la fiche"/>
   </form>
 </div>

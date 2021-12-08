@@ -17,5 +17,6 @@ export class AppComponent {
 
   deconnecter() {
     this.authService.clearStorage();
+    window.location.href = '/accueil';
   }
 }

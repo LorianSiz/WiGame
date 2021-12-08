@@ -1,16 +1,21 @@
 package com.architecture.wigame.decodex;
 
-import java.net.URISyntaxException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class DecodexService {
 
-    private static DecodexTemplate template;
+    @Autowired
+    private final DecodexTemplate template;
 
-    public static int DecodexServices(String url) {
-        int test = template.CallDecodex(url);
-        if (test==0) {
+    public int DecodexServices(String url) {
+        int fiabilite = template.CallDecodex(url);
+        if (fiabilite==0) {
             return -1;
         }
-        else return test;
+        else return fiabilite;
     }
 }

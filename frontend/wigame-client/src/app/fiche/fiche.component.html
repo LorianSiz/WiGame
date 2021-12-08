@@ -14,7 +14,7 @@
   <p *ngIf="!isUrlNull()" id="URL">Source : <a [href]="url">{{url}}</a></p>
   <div id="notation">
     <p id="Note">Note : {{note}} </p>
-    <p id="fiabilite">Fiabilite : {{fiabilite}}</p>
+    <p *ngIf="!isFiabiliteNull()" id="fiabilite">Fiabilite : {{fiabilite}}</p>
   </div>
 </div>
 

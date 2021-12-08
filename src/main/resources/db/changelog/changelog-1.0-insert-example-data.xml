@@ -58,7 +58,7 @@
             <column name="fiabilite" value="4"/>
             <column name="utilisateur_id" value="1"/>
             <column name="wiki_id" value="2"/>
-            <column name="url" value="https://www.minecraft.net/fr-fr"/>
+            <column name="url" value="jeuxvideo.com"/>
         </insert>
         <insert tableName="fiche">
             <column name="titre" value="1.18"/>
