@@ -8,6 +8,7 @@ import {FavorisService} from "../services/favoris.service";
 import {UtilisateurService} from "../services/utilisateur.service";
 import {Utilisateur} from "../models/utilisateur.interface";
 import {Fiche} from "../models/fiche.interface";
+import {waitForAsync} from "@angular/core/testing";
 
 @Component({
   selector: 'app-fiche',
@@ -27,6 +28,8 @@ export class FicheComponent implements OnInit {
 
   utilisateur: Utilisateur;
   fiche: Fiche;
+  isfavoris: boolean = false;
+  favoris?: Favoris;
 
   constructor(private ficheservice : FicheService,
               private favorisservice : FavorisService,
@@ -38,10 +41,12 @@ export class FicheComponent implements OnInit {
     this.idFiche = this.route.snapshot.params['id'];
     this.loadFiche();
 
+
     this.utilisateurService.findByPseudo(this.authService.getUserName()).subscribe((data) => {
       this.utilisateur = data;
       this.ficheservice.getFicheById(this.idFiche).subscribe((data1)=> {
         this.fiche = data1;
+        this.SetFav();
       });
     });
   }
@@ -70,32 +75,35 @@ export class FicheComponent implements OnInit {
     return false;
   }
 
-  getFav() : Favoris {
-    return {
-      util_conserne : this.utilisateur,
-      fich_conserne : this.fiche,
-      }
-    }
-
     TestIsConnected() : boolean {
       return this.authService.isConnecte();
     }
 
 
-    TestFavExist() : boolean {
-      const favoris = this.getFav();
-      return false;
-      // return this.favorisservice.favorIsExist(favoris);
+    SetFav() : void {
+      this.favorisservice.findByIdFichAndIdUser(this.fiche.id!.toString(), this.utilisateur.id!.toString()).subscribe((data) => {
+        data.forEach(value => {
+          this.isfavoris = (value != null);
+          this.favoris = value;
+        });
+      });
     }
 
 
     OnSubmitFav() {
-      const favoris = this.getFav();
-      this.favorisservice.createFavoris(favoris).subscribe();
+      this.favorisservice.createFavoris({
+        util_conserne : this.utilisateur,
+        fich_conserne : this.fiche,
+      }).subscribe(data => {
+        this.SetFav();
+      });
+      this.isfavoris = true;
     }
 
     OnSubmitSupprFav() {
-      const favoris = this.getFav();
-      this.favorisservice.deleteFavoris(favoris);
+      this.favorisservice.deleteFavoris(this.favoris!.id!).subscribe(data => {
+        this.SetFav();
+      });
+      this.isfavoris = false;
     }
   }
