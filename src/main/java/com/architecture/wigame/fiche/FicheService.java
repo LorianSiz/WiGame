@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 //import javax.transaction.Transactional;
 import javax.transaction.Transactional;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,8 +29,9 @@ public class FicheService {
         }
     }
 
-    public FicheDTO createFiche(FicheDTO FicheDTO){
+    public FicheDTO createFiche(FicheDTO FicheDTO) {
         Fiche fiche = mapper.toEntity(FicheDTO);
+        fiche.setFiabilite(NoteDecodex("lemonde.fr"));
         Fiche savedFiche = repository.save(fiche);
         return mapper.toDTO(savedFiche);
     }
@@ -39,6 +41,7 @@ public class FicheService {
         Optional<Fiche> ficheOpt = repository.findById(FicheDTO.getId());
         if(ficheOpt.isPresent()){
             Fiche fiche = mapper.toEntity(FicheDTO);
+            fiche.setFiabilite(NoteDecodex("lemonde.fr"));
             return mapper.toDTO(repository.save(fiche));
         } else {
             return FicheDTO;
