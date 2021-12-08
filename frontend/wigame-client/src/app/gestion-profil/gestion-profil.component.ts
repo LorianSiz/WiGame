@@ -52,6 +52,13 @@ export class GestionProfilComponent implements OnInit {
 
   }
 
+  deleteFavoris(fav : number): void {
+    this.favorisService.deleteFavoris(fav).subscribe();
+    this.favorisService.findByUserId(this.utilisateur!.id!.toString()).subscribe((data1) => {
+      this.favoris = data1;
+    });
+  }
+
   OnSubmitModif() {
     if(this.formModificationUtilisateur.valid) {
       this.submitTest = false;

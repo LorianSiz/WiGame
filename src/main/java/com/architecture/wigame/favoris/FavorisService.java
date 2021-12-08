@@ -34,14 +34,16 @@ public class FavorisService {
 
     public FavorisDTO createFavoris(FavorisDTO favorisDTO){
         Favoris favoris = mapper.toEntity(favorisDTO);
-        Favoris savedFavoris = repository.save(favoris);
-        return mapper.toDTO(savedFavoris);
+        if (!existsFavorisByFichAndUtil(favoris.getFich_conserne().getId(), favoris.getUtil_conserne().getId())){
+            Favoris savedFavoris = repository.save(favoris);
+            return mapper.toDTO(savedFavoris);
+        } else return new FavorisDTO();
     }
 
-    public void deleteFavoris(FavorisDTO favorisDTO) {
-        Optional<Favoris> favorisOpt = repository.findById(favorisDTO.getId());
+    public void deleteFavoris(Long id) {
+        Optional<Favoris> favorisOpt = repository.findById(id);
         if(favorisOpt.isPresent()) {
-            Favoris favoris = mapper.toEntity(favorisDTO);
+            Favoris favoris = repository.getById(id);
             repository.delete(favoris);
         } else {
             // error
@@ -61,7 +63,6 @@ public class FavorisService {
     }
 
     public List<FavorisDTO> findByUserId(Long id) {
-        System.out.println(id);
         List<Favoris> listeFavoris = repository.findByUtil_conserne(id);
         List<FavorisDTO> listeFavorisDTO = new ArrayList<>();
         for (Favoris favoris : listeFavoris) {
@@ -70,8 +71,19 @@ public class FavorisService {
         return listeFavorisDTO;
     }
 
+    public List<FavorisDTO> findByFichAndUtil(Long id_fiche, Long id_util) {
+        List<Favoris> listeFavoris = repository.findByFich_conserneAndUtil_conserne(id_fiche, id_util);
+        List<FavorisDTO> listeFavorisDTO = new ArrayList<>();
+        for (Favoris favoris : listeFavoris) {
+            listeFavorisDTO.add(mapper.toDTO(favoris));
+        }
+        return listeFavorisDTO;
+    }
+
     public boolean existsFavorisByFichAndUtil(Long id_fiche, Long id_util) {
-        return repository.existsFavorisByFich_conserneAndUtil_conserne(id_fiche, id_util);
+        int res = repository.existsFavorisByFich_conserneAndUtil_conserne(id_fiche, id_util);
+        if (res >= 1) return true;
+        else return false;
     }
 
 

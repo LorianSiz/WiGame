@@ -10,10 +10,13 @@
     </div>
     <div>
       <h5> Page favorite : </h5>
-      <ul>
-        <li *ngFor="let fav of favoris"><a routerLink="/fiche/{{fav.fich_conserne!.id!}}" routerLinkActive="active">{{fav.fich_conserne!.titre!}}</a></li>
-      </ul>
+      <table>
+        <tr *ngFor="let fav of favoris">
+          <td><a routerLink="/fiche/{{fav.fich_conserne!.id!}}" routerLinkActive="active">{{fav.fich_conserne!.titre!}}</a></td>
+          <td><button (click)="deleteFavoris(fav.id!)">Supprimer</button></td>
+      </table>
     </div>
+    <br/>
     <div>
       <form  (ngSubmit)="OnSubmit()">
       <input type="submit" value="Modifier les informations"/>
